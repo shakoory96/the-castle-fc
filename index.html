@@ -22,13 +22,48 @@
 .pair{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--edge)}.pair:last-child{border-bottom:0}.pair span{color:#9fb8d1}.rating-faint{color:#7991a9;font-size:12px}.notice .notice-txt{flex:1}.big-stat{font-size:31px;font-weight:900}.grid-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.grid-cards .panel{text-align:center;padding:17px 9px}.grid-cards .panel .lbl{font-size:11px;color:#a6bdd3}.empty-hero{padding:21px;border:1px dashed #35618d;border-radius:15px;color:#adcae4}
 @media(max-width:900px){.live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.form-grid{grid-template-columns:1fr}.live-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.live-player{padding:14px 7px}.live-avatar{width:71px;height:71px}.live-player .name{font-size:15px}.fixture{padding:13px 10px;gap:8px}.fixture .op{font-size:12px}.fixture .mid{font-size:18px}.panel{padding:17px}}
+
+/* THE CASTLE CONTENT STUDIO — version 2 */
+.cms-hero-back{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.26;pointer-events:none}
+.sidebar{background:linear-gradient(180deg,var(--side),#0b111b)}
+.panel{background:linear-gradient(145deg,var(--panel),#101826)}
+.btn.primary{background:var(--blue);border-color:var(--blue);box-shadow:0 8px 23px #146add3c}
+.btn.primary:hover{background:var(--blue2);border-color:var(--blue2)}
+.nav-link.active{box-shadow:inset -3px 0 var(--blue)}
+.hero h2 em{color:var(--blue2)}
+.eyebrow,.sub-link{color:var(--blue2)}
+.brand small,.menu-label{color:var(--blue2)}
+.cms-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+.cms-card{border:1px solid var(--edge);background:var(--panel);border-radius:18px;overflow:hidden;min-width:0}
+.cms-card>img{height:190px;width:100%;object-fit:cover;display:block}
+.cms-card-body{padding:18px}.cms-card h3{margin:0 0 8px;font-size:17px}
+.cms-card p,.cms-body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.85}
+.cms-card p{color:var(--muted);font-size:13px}.cms-card .btn{margin-top:10px}
+.cms-custom{max-width:1000px}.cms-page-image{display:block;width:100%;max-height:500px;object-fit:cover;border-radius:16px;margin-bottom:22px}
+.cms-custom .btn{margin-top:20px}.cms-editor{padding:24px}
+.cms-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0}.cms-tabs .btn.active{border-color:var(--blue);background:#1a4d83;color:#fff}
+.cms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.cms-field{display:flex;flex-direction:column;gap:6px;min-width:0;font-weight:800;color:#bdd0e8;font-size:12px}
+.cms-field input[type=text],.cms-field textarea{display:block;min-width:0;width:100%;color:#fff;background:#0c1726;border:1px solid #36506d;border-radius:11px;padding:11px 12px;line-height:1.7;font-size:13px;font-weight:500;outline:none}
+.cms-field input:focus,.cms-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 2px #2589ff36}
+.cms-field textarea{resize:vertical}.cms-field input[type=color]{border:1px solid #36506d;border-radius:8px;width:100%;height:42px;background:#0c1726;padding:4px;cursor:pointer}
+.cms-check{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:15px;background:#142338;padding:12px 14px;border:1px solid #243d58;border-radius:10px}
+.cms-check input{width:19px;height:19px;accent-color:var(--blue)}
+.cms-item{padding:17px;background:#101a29;border:1px solid #284159;border-radius:15px}
+.cms-item-bar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}.cms-inline{display:flex;flex-wrap:wrap;gap:7px}
+.cms-stack{display:grid;gap:13px;margin:17px 0}.cms-navfields{display:grid;grid-template-columns:2fr 1fr 1fr;align-items:center;gap:12px}
+.cms-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;border-top:1px solid var(--edge);padding-top:18px}
+.cms-menu-popup{display:grid;gap:5px}.cms-image-thumb{max-width:160px;max-height:120px;object-fit:cover;margin-top:8px;border-radius:9px}
+.cms-adaptive:not(:has(> :nth-child(2))){grid-template-columns:1fr}
+@media(max-width:860px){.cms-grid{grid-template-columns:1fr}.cms-navfields{grid-template-columns:1fr 1fr}.cms-navfields .cms-check{grid-column:1/-1}.cms-editor{padding:15px}.cms-tabs .btn{flex:1}}
+@media(max-width:480px){.cms-navfields{grid-template-columns:1fr}.cms-actions .btn{width:100%}.cms-card-grid{grid-template-columns:1fr}}
 </style></head>
 <body><div class="app"><aside class="sidebar"><div class="brand"><img src="official_castle_logo.jpg" alt="الشعار الرسمي لفريق القلعة"><div><h1>القلعة</h1><small>THE CASTLE FC</small></div></div><div class="menu-label">عالم القلعة</div><nav class="side-nav" id="desktop-nav"></nav><div class="side-foot"><div class="big"><span class="status"></span> البيانات الحقيقية</div><p>يتم عرض بيانات اللاعبين والمباريات المحفوظة في قاعدة بيانات النادي.</p></div></aside><div class="main-wrap"><header class="topbar"><div class="trail"><span class="mobile-only" style="font-size:20px;color:#63b3ff">♜</span><span>THE CASTLE</span><span>‹</span><b id="bread">الرئيسية</b></div><div class="top-actions"><span class="beta">● LIVE DATA</span><button class="btn sm ghost" data-view="admin">⚙ <span class="hide-small">الإدارة</span></button></div></header><main class="content"><div id="status-notice" class="notice" role="status"></div><div id="screen" aria-live="polite"></div><footer>© THE CASTLE FC • منصة القلعة الرياضية • <a href="https://www.facebook.com/profile.php?id=61594539968482" rel="noopener noreferrer" target="_blank">صفحتنا الرسمية على فيسبوك</a></footer></main></div></div><nav class="mobile-bottom" id="mobile-nav"></nav><div id="drawer"></div><div id="overlay"></div><div class="toast" id="toast" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>'use strict';
 const SUPABASE_URL='https://sfjqaeqabzhnikifpqki.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_lFw3vmM2_NXy8_HCC07EQQ_hK0fQmwo';
 const LOGO='official_castle_logo.jpg';
 const NAV=[['home','⌂','الرئيسية'],['players','♟','اللاعبون'],['ranking','♛','التصنيف'],['matches','⚽','المباريات'],['fans','♡','الجمهور'],['honors','♜','سجل المجد'],['admin','⚙','الإدارة']];
-const state={view:'home',user:null,admin:false,players:[],matches:[],loading:true,error:'',adminTab:'players',playerSearch:'',playerFilter:'الكل'};
+const state={view:'home',user:null,admin:false,players:[],matches:[],loading:true,error:'',adminTab:'players',editorTab:'texts',playerSearch:'',playerFilter:'الكل',config:null,configVersion:1,draft:null,previewMode:false};
 let client=null;let toastTimer;
 const esc=x=>String(x??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const safeUrl=x=>{try{const u=new URL(String(x||''),location.href);return ['https:','http:'].includes(u.protocol)?esc(u.href):''}catch{return ''}};
@@ -43,30 +78,32 @@ const avatar=(p,css='live-avatar')=>p&&p.photo_url?safeUrl(p.photo_url)?`<div cl
 function notify(m){let e=document.getElementById('toast');e.textContent=m;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),4500)}
 function title(s,sub='',action=''){return `<div class="heading"><div><h2>${s}</h2>${sub?`<p>${sub}</p>`:''}</div>${action}</div>`}
 function empty(s){return `<div class="empty-state">${esc(s)}</div>`}
-function navHtml(mobile=false){return (mobile?NAV.slice(0,5):NAV).map(([id,icon,name])=>mobile?`<button class="${state.view===id?'active':''}" data-view="${id}"><span class="mi">${icon}</span><small>${name}</small></button>`:`<button class="nav-link ${state.view===id?'active':''}" data-view="${id}"><span class="nav-icon">${icon}</span>${name}</button>`).join('')}
-function home(){const st=stats(),up=matchesSorted().filter(m=>m.status==='scheduled'&&m.match_date>=(new Date().toLocaleDateString('en-CA'))).sort((a,b)=>a.match_date.localeCompare(b.match_date))[0],past=matchesSorted().filter(m=>m.status==='completed').slice(0,3);
-return `<section class="hero"><div class="hero-copy"><div class="pill">✦ WELCOME TO THE CASTLE</div><h2>هنا <em>القلعة،</em><br>وهنا يبدأ المجد.</h2><p>بيت القلعة الرقمي: اللاعبون، المباريات، الإنجازات... تاريخنا نكتبه مباراة بعد مباراة.</p><div class="hero-actions"><button class="btn primary" data-view="players">اكتشف نجوم القلعة ←</button><button class="btn ghost" data-view="matches">⚽ مركز المباريات</button></div></div><div class="hero-art"><div class="hero-ring"></div><img src="${LOGO}" alt="الشعار الرسمي للقلعة"><div class="hero-caption">THE CASTLE • EST. WITH PRIDE</div></div></section>
-<div class="kpis"><div class="kpi"><div><div class="lbl">اللاعبون</div><div class="num">${fmt(state.players.filter(p=>p.is_active!==false).length)}</div></div><span class="ico">♟</span></div><div class="kpi"><div><div class="lbl">المباريات المكتملة</div><div class="num">${fmt(st.played)}</div></div><span class="ico">⚽</span></div><div class="kpi"><div><div class="lbl">الانتصارات</div><div class="num">${fmt(st.wins)}</div></div><span class="ico">🏆</span></div><div class="kpi"><div><div class="lbl">الأهداف المسجلة</div><div class="num">${fmt(st.goals)}</div></div><span class="ico">◎</span></div></div>
-<div class="grid2"><div class="panel"><div class="panel-head"><h3>⚡ المباراة القادمة</h3><button class="sub-link" data-view="matches">مركز المباريات ←</button></div>${up?fixture(up):empty('ماكو مباراة قادمة مسجلة حالياً.')}</div><div class="panel"><div class="panel-head"><h3>🏅 عرش القلعة</h3><button class="sub-link" data-view="ranking">التصنيف الكامل ←</button></div>${sortedRatings().length?sortedRatings().slice(0,4).map((p,i)=>`<div class="pair"><span>${i+1}. ${esc(p.name)}</span><b style="color:#83c9ff">${fmt(p.rating)}</b></div>`).join(''):empty('التقييمات ما انضافت بعد، لذلك ماكو ترتيب افتراضي.')}</div></div>
-<div class="panel" style="margin-top:20px"><div class="panel-head"><h3>⚽ آخر النتائج</h3><button class="sub-link" data-view="matches">كل النتائج ←</button></div>${past.length?`<div class="card-list">${past.map(fixture).join('')}</div>`:empty('بعد ما مسجلين مباريات مكتملة.')}</div>`}
+function navHtml(mobile=false){const links=(mobile?NAV.slice(0,4):NAV).map(([id,icon,name])=>mobile?`<button class="${state.view===id?'active':''}" data-view="${esc(id)}"><span class="mi">${iconLink(icon)}</span><small>${esc(name)}</small></button>`:`<button class="nav-link ${state.view===id?'active':''}" data-view="${esc(id)}"><span class="nav-icon">${iconLink(icon)}</span>${esc(name)}</button>`).join('');return mobile?links+'<button data-show-menu="1"><span class="mi">☰</span><small>المزيد</small></button>':links;}
+function home(){
+  const st=stats(),up=matchesSorted().filter(m=>m.status==='scheduled'&&m.match_date>=(new Date().toLocaleDateString('en-CA'))).sort((a,b)=>a.match_date.localeCompare(b.match_date))[0],past=matchesSorted().filter(m=>m.status==='completed').slice(0,3),c=settings(),sections=c.sections;
+  const banner=safeUrl(c.branding.bannerUrl);
+  return `${sections.hero?`<section class="hero">${banner?`<img class="cms-hero-back" src="${banner}" alt="" aria-hidden="true">`:''}<div class="hero-copy"><div class="pill">${t('heroTag')}</div><h2>${t('heroStart')}<em>${t('heroHighlight')}</em><br>${t('heroEnd')}</h2><p>${t('heroDescription')}</p><div class="hero-actions"><button class="btn primary" data-view="players">${t('heroPrimary')} ←</button><button class="btn ghost" data-view="matches">⚽ ${t('heroSecondary')}</button></div></div><div class="hero-art"><div class="hero-ring"></div><img src="${siteLogo()}" alt="شعار القلعة"><div class="hero-caption">${t('heroCaption')}</div></div></section>`:''}
+  ${sections.summary?`<div class="kpis"><div class="kpi"><div><div class="lbl">${t('kpiPlayers')}</div><div class="num">${fmt(state.players.filter(p=>p.is_active!==false).length)}</div></div><span class="ico">♟</span></div><div class="kpi"><div><div class="lbl">${t('kpiMatches')}</div><div class="num">${fmt(st.played)}</div></div><span class="ico">⚽</span></div><div class="kpi"><div><div class="lbl">${t('kpiWins')}</div><div class="num">${fmt(st.wins)}</div></div><span class="ico">🏆</span></div><div class="kpi"><div><div class="lbl">${t('kpiGoals')}</div><div class="num">${fmt(st.goals)}</div></div><span class="ico">◎</span></div></div>`:''}
+  ${(sections.nextMatch||sections.topPlayers)?`<div class="grid2 cms-adaptive">${sections.nextMatch?`<div class="panel"><div class="panel-head"><h3>${t('homeNext')}</h3><button class="sub-link" data-view="matches">${t('heroSecondary')} ←</button></div>${up?fixture(up):empty('ماكو مباراة قادمة مسجلة حالياً.')}</div>`:''}${sections.topPlayers?`<div class="panel"><div class="panel-head"><h3>${t('homeRanking')}</h3><button class="sub-link" data-view="ranking">التصنيف الكامل ←</button></div>${sortedRatings().length?sortedRatings().slice(0,4).map((p,i)=>`<div class="pair"><span>${i+1}. ${esc(p.name)}</span><b style="color:var(--blue2)">${fmt(p.rating)}</b></div>`).join(''):empty('التقييمات ما انضافت بعد، لذلك ماكو ترتيب افتراضي.')}</div>`:''}</div>`:''}
+  ${sections.recentResults?`<div class="panel" style="margin-top:20px"><div class="panel-head"><h3>${t('homeResults')}</h3><button class="sub-link" data-view="matches">كل النتائج ←</button></div>${past.length?`<div class="card-list">${past.map(fixture).join('')}</div>`:empty('بعد ما مسجلين مباريات مكتملة.')}</div>`:''}
+  ${homeExtraCards()}`;
+}
 function fixture(m){let completed=m.status==='completed',score=completed?`${fmt(m.our_score)} - ${fmt(m.opponent_score)}`:m.status==='cancelled'?'ملغاة':'VS';let cls=completed?(m.our_score>m.opponent_score?'win':m.our_score<m.opponent_score?'loss':''):' ';return `<button class="fixture" data-match="${esc(m.id)}" style="width:100%;text-align:right;color:inherit;cursor:pointer"><div><div class="comp">${esc(m.competition||'مباراة')} · ${dateFmt(m.match_date)}</div><div class="op">القلعة</div></div><div class="mid ${cls}">${score}</div><div><div class="comp">${m.venue?esc(m.venue):'منافسة رياضية'}</div><div class="op">${esc(m.opponent_name)}</div></div></button>`}
-function players(){let q=state.playerSearch.trim(),list=state.players.filter(p=>(state.admin||p.is_active!==false)&&(!q||p.name.includes(q))&&(state.playerFilter==='الكل'||p.position===state.playerFilter));return `${title('نجوم القلعة','ملفات اللاعبين الحقيقيين المسجلين بقاعدة بيانات النادي.')}
+function players(){let q=state.playerSearch.trim(),list=state.players.filter(p=>(state.admin||p.is_active!==false)&&(!q||p.name.includes(q))&&(state.playerFilter==='الكل'||p.position===state.playerFilter));return `${title(t('playersTitle'),t('playersSubtitle'))}
 <div class="panel"><div class="section-actions"><input id="player-search" value="${esc(q)}" placeholder="ابحث عن لاعب..." style="padding:10px;background:#0d1826;border:1px solid #315170;border-radius:10px;color:#fff;max-width:240px"><select id="position-filter" style="padding:10px;background:#0d1826;border:1px solid #315170;border-radius:10px;color:#fff"><option>الكل</option>${[...new Set(state.players.map(p=>p.position).filter(Boolean))].map(p=>`<option ${state.playerFilter===p?'selected':''}>${esc(p)}</option>`).join('')}</select></div></div><div style="height:15px"></div>
 ${list.length?`<div class="live-grid">${list.map(p=>`<button class="live-player" data-player="${esc(p.id)}" title="ملف اللاعب">${avatar(p)}<div class="num-chip">#${p.jersey_number==null?'—':fmt(p.jersey_number)}</div><div class="name">${esc(p.name)}</div><div class="muted">${esc(p.position||'لم يُحدد المركز')}</div><div class="rating-pill">التقييم: ${p.rating==null?'غير محدد':fmt(p.rating)}</div>${p.is_active===false?'<span class="badge-status">غير نشط</span>':''}</button>`).join('')}</div>`:empty('لا يوجد لاعبون مطابقون للبحث.')}`}
-function ranking(){let list=sortedRatings();return `${title('عرش القلعة','التقييمات اليدوية المعتمدة من الإدارة — ليست نتائج تلقائية بعد.',`<span class="badge">POWER RANKING</span>`)}<div class="panel">${list.length?`<div class="table-wrap"><table class="live-table"><thead><tr><th>المركز</th><th>اللاعب</th><th>المركز الرياضي</th><th>التقييم / 100</th></tr></thead><tbody>${list.map((p,i)=>`<tr><td><b>${fmt(i+1)}</b></td><td>${esc(p.name)}</td><td>${esc(p.position||'—')}</td><td><b style="color:#6ab7ff">${fmt(p.rating)}</b></td></tr>`).join('')}</tbody></table></div>`:empty('ما تم إدخال تقييمات اللاعبين بعد. راح يظهر التصنيف من نبدأ نسجّل تقييمات معتمدة.')}</div><div class="callout" style="margin-top:15px">ℹ التقييم الحالي يُدخل يدوياً من مدير الفريق. نظام التقييم المتقدم لكل مركز راح نضيفه بمرحلة قادمة بعد الاتفاق على المعايير.</div>`}
-function matches(){const l=matchesSorted(),st=stats();return `${title('مركز المباريات','نتائج ومواعيد فريق القلعة الموثقة بقاعدة البيانات.')}
+function ranking(){let list=sortedRatings();return `${title(t('rankingTitle'),t('rankingSubtitle'),`<span class="badge">POWER RANKING</span>`)}<div class="panel">${list.length?`<div class="table-wrap"><table class="live-table"><thead><tr><th>المركز</th><th>اللاعب</th><th>المركز الرياضي</th><th>التقييم / 100</th></tr></thead><tbody>${list.map((p,i)=>`<tr><td><b>${fmt(i+1)}</b></td><td>${esc(p.name)}</td><td>${esc(p.position||'—')}</td><td><b style="color:#6ab7ff">${fmt(p.rating)}</b></td></tr>`).join('')}</tbody></table></div>`:empty('ما تم إدخال تقييمات اللاعبين بعد. راح يظهر التصنيف من نبدأ نسجّل تقييمات معتمدة.')}</div><div class="callout" style="margin-top:15px">ℹ التقييم الحالي يُدخل يدوياً من مدير الفريق. نظام التقييم المتقدم لكل مركز راح نضيفه بمرحلة قادمة بعد الاتفاق على المعايير.</div>`}
+function matches(){const l=matchesSorted(),st=stats();return `${title(t('matchesTitle'),t('matchesSubtitle'))}
 <div class="grid-cards"><div class="panel"><div class="lbl">لعب</div><div class="big-stat">${fmt(st.played)}</div></div><div class="panel"><div class="lbl">فوز</div><div class="big-stat">${fmt(st.wins)}</div></div><div class="panel"><div class="lbl">تعادل</div><div class="big-stat">${fmt(st.draws)}</div></div><div class="panel"><div class="lbl">خسارة</div><div class="big-stat">${fmt(st.losses)}</div></div></div><div class="panel" style="margin-top:18px">${l.length?`<div class="card-list">${l.map(fixture).join('')}</div>`:empty('لم تُسجّل مباريات بعد.')}</div>`}
-function fans(){return `${title('مدرج القلعة','الجمهور جزء من كل انتصار وكل حكاية.')}
-<div class="panel"><div class="eyebrow">COMING SOON · قريباً</div><h3>توقع النتائج والتصويت لنجم المباراة</h3><p class="muted">راح نفتح التوقعات والتصويت بعد تجهيز نظام يمنع التكرار ويحفظ الأصوات للجميع بشكل آمن. ماكو نتائج أو تصويت تجريبي منشور حالياً.</p><p>تابع أخبار النادي عبر <a href="https://www.facebook.com/profile.php?id=61594539968482" rel="noopener noreferrer" target="_blank" style="color:#76c5ff;text-decoration:underline">صفحة القلعة على فيسبوك</a>.</p></div>`}
-function honors(){return `${title('سجل المجد','كل بطولة وإنجاز يستحق يبقى محفوظاً بتاريخ القلعة.')}
-<div class="panel"><h3>♜ تاريخنا قيد التوثيق</h3><p class="muted">راح يظهر هنا سجل البطولات والجوائز بعد إدخال إنجازات الفريق الحقيقية. ما نعرض إنجازات افتراضية.</p></div>`}
+function fans(){return `${title(t('fansTitle'),t('fansSubtitle'))}<div class="panel"><div class="eyebrow">COMING SOON · قريباً</div><h3>${t('fansHeading')}</h3><p class="muted cms-body">${t('fansDescription')}</p>${safeUrl(settings().branding.facebook)?`<p>تابع أخبار النادي عبر <a target="_blank" rel="noopener noreferrer" href="${safeUrl(settings().branding.facebook)}">صفحتنا الرسمية على فيسبوك ↗</a></p>`:''}</div>`;}
+function honors(){return `${title(t('honorsTitle'),t('honorsSubtitle'))}<div class="panel"><h3>${t('honorsHeading')}</h3><p class="muted cms-body">${t('honorsDescription')}</p></div>`;}
 function loginForm(){return `<div class="panel welcome-login"><div class="eyebrow">CASTLE CONTROL</div><h3>تسجيل دخول مدير القلعة</h3><p class="muted">استخدم إيميل وكلمة مرور حساب الموقع اللي أنشأته داخل Supabase → Authentication → Users، مو حساب GitHub.</p><form id="login-form" class="form-grid"><div class="field full"><label for="auth-email">البريد الإلكتروني</label><input id="auth-email" name="email" type="email" required autocomplete="username"></div><div class="field full"><label for="auth-pass">كلمة المرور</label><input id="auth-pass" name="password" type="password" required autocomplete="current-password" minlength="6"></div><div class="field full"><button class="btn primary" type="submit">دخول الإدارة</button></div></form></div>`}
 function admin(){if(!state.user)return `${title('غرفة القيادة','التحكم بمعلومات فريق القلعة.')}${loginForm()}`;if(!state.admin)return `${title('غرفة القيادة','صلاحيات الموقع')}
 <div class="panel"><p class="notice error"><span>هذا الحساب مسجّل لكن ما عنده صلاحية مدير القلعة. تأكد من إضافة حسابك إلى private.castle_admins.</span></p><button class="btn ghost" id="logout-btn">تسجيل الخروج</button></div>`;
 return `${title('غرفة قيادة القلعة',`أهلاً بك — ${esc(state.user.email||'مدير القلعة')}`,`<button class="btn ghost sm" id="logout-btn">تسجيل الخروج</button>`)}
 <div class="callout" style="margin-bottom:20px">🛡 الإضافات والتعديلات محفوظة مباشرة في Supabase وتظهر لكل زوار الموقع. الصور تُرفع إلى مساحة النادي.</div>
-<div class="admin-switch"><button class="btn sm ${state.adminTab==='players'?'active':''}" data-admin-tab="players">♟ إدارة اللاعبين</button><button class="btn sm ${state.adminTab==='matches'?'active':''}" data-admin-tab="matches">⚽ إدارة المباريات</button><button class="btn sm" id="refresh-btn">↻ تحديث البيانات</button></div>
-${state.adminTab==='players'?adminPlayers():adminMatches()}`}
+<div class="admin-switch"><button class="btn sm ${state.adminTab==='players'?'active':''}" data-admin-tab="players">♟ إدارة اللاعبين</button><button class="btn sm ${state.adminTab==='matches'?'active':''}" data-admin-tab="matches">⚽ إدارة المباريات</button><button class="btn sm ${state.adminTab==='studio'?'active':''}" data-admin-tab="studio">✎ إعدادات وتصميم الموقع</button><button class="btn sm" id="refresh-btn">↻ تحديث البيانات</button></div>
+${state.adminTab==='players'?adminPlayers():state.adminTab==='matches'?adminMatches():cmsEditor()}`}
 function adminPlayers(){return `<div class="panel"><div class="panel-head"><h3>إضافة لاعب</h3><span class="tiny">الاسم مطلوب، والبقية اختيارية</span></div>${playerForm()}</div>
 <div class="panel" style="margin-top:18px"><h3>قائمة اللاعبين (${fmt(state.players.length)})</h3><div class="table-wrap"><table class="live-table"><thead><tr><th>الاسم</th><th>الرقم</th><th>المركز</th><th>الحالة</th><th>الإجراءات</th></tr></thead><tbody>${state.players.map(p=>`<tr><td><div class="row-player">${avatar(p,'mini-photo-wrap')}<b>${esc(p.name)}</b></div></td><td>${p.jersey_number==null?'—':fmt(p.jersey_number)}</td><td>${esc(p.position||'—')}</td><td>${p.is_active?'نشط':'مخفي'}</td><td><button class="btn sm" data-edit-player="${esc(p.id)}">تعديل</button> <button class="btn sm danger" data-delete-player="${esc(p.id)}">حذف</button></td></tr>`).join('')||'<tr><td colspan="5">لا يوجد لاعبون بعد.</td></tr>'}</tbody></table></div></div>`}
 function playerForm(p){p=p||{};return `<form class="form-grid" id="player-form" data-id="${esc(p.id||'')}"><div class="field"><label>اسم اللاعب *</label><input name="name" required maxlength="75" value="${esc(p.name||'')}"></div><div class="field"><label>رقم القميص</label><input name="jersey_number" type="number" min="0" max="99" value="${p.jersey_number??''}"></div><div class="field"><label>مركز اللاعب</label><input name="position" list="positions-list" maxlength="60" value="${esc(p.position||'')}"><datalist id="positions-list">${positions.map(x=>`<option value="${esc(x)}">`).join('')}</datalist></div><div class="field"><label>تقييم اللاعب /100 (اختياري)</label><input name="rating" type="number" min="0" max="100" value="${p.rating??''}"></div><div class="field"><label>المشاركات (إدخال يدوي)</label><input name="appearances" type="number" min="0" value="${p.appearances??''}"></div><div class="field"><label>الأهداف (إدخال يدوي)</label><input name="goals" type="number" min="0" value="${p.goals??''}"></div><div class="field"><label>الصناعات (إدخال يدوي)</label><input name="assists" type="number" min="0" value="${p.assists??''}"></div><div class="field"><label>شباك نظيفة (إدخال يدوي)</label><input name="clean_sheets" type="number" min="0" value="${p.clean_sheets??''}"></div><div class="field full"><label>صورة اللاعب (JPG/PNG/WebP، حتى 3MB)</label><input name="photo" type="file" accept="image/jpeg,image/png,image/webp"><small class="muted">إذا خليتها فارغة، نحتفظ بالصورة الحالية إن وجدت.</small></div><div class="field full"><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" name="is_active" ${p.is_active!==false?'checked':''} style="width:auto;min-height:0"> إظهار اللاعب للجمهور</label></div><div class="field full"><button type="submit" class="btn primary">${p.id?'حفظ تعديل اللاعب':'إضافة اللاعب'}</button></div></form>`}
@@ -76,17 +113,204 @@ function showPlayer(id){let p=state.players.find(x=>x.id===id);if(!p)return;moda
 function showMatch(id){let m=state.matches.find(x=>x.id===id);if(!m)return;modal(`<div class="eyebrow">CASTLE MATCH CENTER</div><h2>${esc(m.opponent_name)}</h2>${fixture(m)}<div class="pair"><span>التاريخ</span><b>${dateFmt(m.match_date)}</b></div><div class="pair"><span>الوقت</span><b>${esc(m.kickoff_time?.slice(0,5)||'غير محدد')}</b></div><div class="pair"><span>البطولة</span><b>${esc(m.competition||'—')}</b></div><div class="pair"><span>الملعب</span><b>${esc(m.venue||'—')}</b></div>${m.notes?`<div class="pair"><span>ملاحظات</span><b>${esc(m.notes)}</b></div>`:''}`)}
 function modal(html){document.getElementById('overlay').innerHTML=`<div class="modal-overlay" data-close="1"><div class="modal" role="dialog" aria-modal="true"><button class="close" data-close="1" aria-label="إغلاق">×</button>${html}</div></div>`}
 function closeModal(){document.getElementById('overlay').innerHTML=''}
-function render(){document.getElementById('desktop-nav').innerHTML=navHtml();document.getElementById('mobile-nav').innerHTML=navHtml(true);document.getElementById('bread').textContent=NAV.find(n=>n[0]===state.view)?.[2]||'الرئيسية';let banner=document.getElementById('status-notice');banner.className='notice '+(state.error?'error':'success');banner.innerHTML=`<span>✦</span><span class="notice-txt">${state.error?`تعذّر الاتصال بقاعدة البيانات: ${esc(state.error)}. لم نعرض أي بيانات تجريبية.`:state.loading?'جاري جلب بيانات القلعة الحقيقية...':'بيانات الموقع مرتبطة بقاعدة Supabase. لا يوجد محتوى تجريبي.'}</span>${!state.loading?'<button class="btn sm" id="refresh-btn">↻ تحديث</button>':''}`;let pages={home,players,ranking,matches,fans,honors,admin};document.getElementById('screen').innerHTML=state.loading?empty('جاري تحميل البيانات...'):(pages[state.view]||home)();let b=document.querySelector('.beta');b.textContent=state.error?'● OFFLINE':'● LIVE DATA';b.classList.toggle('live-status',!state.error);}
+function render(){syncAppearance();NAV.splice(0,NAV.length,...navItems().map(n=>[n.id,n.icon,n.label]));document.getElementById('desktop-nav').innerHTML=navHtml();document.getElementById('mobile-nav').innerHTML=navHtml(true);document.getElementById('bread').textContent=NAV.find(n=>n[0]===state.view)?.[2]||(state.view==='admin'?'الإدارة':'الرئيسية');let banner=document.getElementById('status-notice');banner.className='notice '+(state.error?'error':'success');banner.innerHTML=`<span>✦</span><span class="notice-txt">${state.previewMode?'معاينة شخصية غير منشورة: اضغط «العودة للتحرير» حتى ترجع للإعدادات.':state.error?`تعذّر الاتصال بقاعدة البيانات: ${esc(state.error)}. لم نعرض أي بيانات تجريبية.`:state.loading?'جاري جلب بيانات القلعة الحقيقية...':'بيانات الموقع مرتبطة بقاعدة Supabase. لا يوجد محتوى تجريبي.'}</span>${state.previewMode?'<button class="btn sm" id="cms-back-edit">العودة للتحرير</button>':!state.loading?'<button class="btn sm" id="refresh-btn">↻ تحديث</button>':''}`;let pages={home,players,ranking,matches,fans,honors,admin};document.getElementById('screen').innerHTML=state.loading?empty('جاري تحميل البيانات...'):(pages[state.view]||customPage)();let b=document.querySelector('.beta');b.textContent=state.error?'● OFFLINE':state.previewMode?'◉ معاينة خاصة':'● LIVE DATA';b.classList.toggle('live-status',!state.error);}
 function go(view){state.view=view;closeModal();render();window.scrollTo({top:0,behavior:'smooth'})}
 function mapErr(err){if(!err)return 'خطأ غير معروف';return /invalid login credentials/i.test(err.message||'')?'بيانات تسجيل الدخول غير صحيحة.':(err.message||String(err))}
-async function refresh(){if(!client){state.error='تعذر تحميل مكتبة الاتصال. تحقق من الإنترنت.';state.loading=false;render();return}state.loading=true;state.error='';render();try{const authRes=await client.auth.getUser();state.user=authRes.data?.user||null;state.admin=false;if(state.user){const r=await client.rpc('castle_admin_status');if(r.error)throw new Error('تعذر التأكد من صلاحيات المدير: '+mapErr(r.error));state.admin=r.data===true}const [pr,mr]=await Promise.all([client.from('players').select('*').order('created_at',{ascending:false}),client.from('matches').select('*').order('match_date',{ascending:false})]);if(pr.error)throw pr.error;if(mr.error)throw mr.error;state.players=pr.data||[];state.matches=mr.data||[];}catch(e){state.error=mapErr(e);state.players=[];state.matches=[];}finally{state.loading=false;render()}}
+async function refresh(){if(!client){state.error='تعذر تحميل مكتبة الاتصال. تحقق من الإنترنت.';state.loading=false;render();return}state.loading=true;state.error='';render();try{const authRes=await client.auth.getUser();state.user=authRes.data?.user||null;state.admin=false;if(state.user){const r=await client.rpc('castle_admin_status');if(r.error)throw new Error('تعذر التأكد من صلاحيات المدير: '+mapErr(r.error));state.admin=r.data===true}const [pr,mr,sr]=await Promise.all([client.from('players').select('*').order('created_at',{ascending:false}),client.from('matches').select('*').order('match_date',{ascending:false}),client.from('site_settings').select('config,version').eq('id',1).single()]);if(pr.error)throw pr.error;if(mr.error)throw mr.error;if(sr.error)throw new Error('إعدادات الموقع: '+mapErr(sr.error));state.players=pr.data||[];state.matches=mr.data||[];state.config=normalizeSite(sr.data.config);state.configVersion=sr.data.version;if(!state.draft)state.draft=cloneObj(state.config);}catch(e){state.error=mapErr(e);state.players=[];state.matches=[];}finally{state.loading=false;render()}}
 async function uploadPhoto(file){if(!file)return null;if(file.size>3*1024*1024)throw new Error('حجم الصورة أكبر من 3MB');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('اختر صورة JPG أو PNG أو WebP');let ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[file.type];const path=`players/${crypto.randomUUID()}.${ext}`;let up=await client.storage.from('castle-player-photos').upload(path,file,{contentType:file.type,upsert:false});if(up.error)throw up.error;return client.storage.from('castle-player-photos').getPublicUrl(path).data.publicUrl}
 async function submitPlayer(form){if(!state.admin)return notify('هذا الإجراء خاص بمدير القلعة');const f=new FormData(form),id=form.dataset.id;let name=String(f.get('name')||'').trim();if(!name)throw new Error('اسم اللاعب مطلوب.');const intOrNull=(key)=>{let v=String(f.get(key)||'').trim();return v===''?null:Number(v)};const payload={name,jersey_number:intOrNull('jersey_number'),position:String(f.get('position')||'').trim()||null,rating:intOrNull('rating'),appearances:intOrNull('appearances'),goals:intOrNull('goals'),assists:intOrNull('assists'),clean_sheets:intOrNull('clean_sheets'),is_active:f.get('is_active')==='on'};let photo=await uploadPhoto(form.querySelector('[name="photo"]').files[0]);if(photo)payload.photo_url=photo;const q=id?client.from('players').update(payload).eq('id',id):client.from('players').insert(payload);let res=await q.select('id');if(res.error)throw res.error;closeModal();notify(id?'تم تعديل اللاعب':'تمت إضافة اللاعب');await refresh()}
 async function submitMatch(form){if(!state.admin)return notify('هذا الإجراء خاص بمدير القلعة');const f=new FormData(form),id=form.dataset.id;let status=String(f.get('status'));const completed=status==='completed';let a=String(f.get('our_score')||'').trim(),b=String(f.get('opponent_score')||'').trim();if(completed&&(a===''||b===''))throw new Error('أدخل نتيجتي الفريقين للمباراة المكتملة');let payload={opponent_name:String(f.get('opponent_name')||'').trim(),match_date:String(f.get('match_date')||''),kickoff_time:String(f.get('kickoff_time')||'')||null,competition:String(f.get('competition')||'').trim()||null,venue:String(f.get('venue')||'').trim()||null,status,our_score:completed?Number(a):null,opponent_score:completed?Number(b):null,notes:String(f.get('notes')||'').trim()||null};if(!payload.opponent_name||!payload.match_date)throw new Error('اسم المنافس والتاريخ مطلوبان');const q=id?client.from('matches').update(payload).eq('id',id):client.from('matches').insert(payload);let res=await q.select('id');if(res.error)throw res.error;closeModal();notify(id?'تم تعديل المباراة':'تم تسجيل المباراة');await refresh()}
 async function guardedRun(btn,task){if(btn)btn.disabled=true;try{await task()}catch(e){notify('خطأ: '+mapErr(e));console.error(e)}finally{if(btn?.isConnected)btn.disabled=false}}
-document.addEventListener('click',async e=>{let v=e.target.closest('[data-view]');if(v){go(v.dataset.view);return}let pc=e.target.closest('[data-player]');if(pc){showPlayer(pc.dataset.player);return}let mt=e.target.closest('[data-match]');if(mt){showMatch(mt.dataset.match);return}let close=e.target.closest('[data-close]');if(close&&(e.target===close||e.target.closest('button[data-close]'))){closeModal();return}let adminTab=e.target.closest('[data-admin-tab]');if(adminTab){state.adminTab=adminTab.dataset.adminTab;render();return}let editP=e.target.closest('[data-edit-player]');if(editP&&state.admin){let p=state.players.find(x=>x.id===editP.dataset.editPlayer);if(p)modal(`<h2>تعديل اللاعب</h2>${playerForm(p)}`);return}let editM=e.target.closest('[data-edit-match]');if(editM&&state.admin){let m=state.matches.find(x=>x.id===editM.dataset.editMatch);if(m)modal(`<h2>تعديل المباراة</h2>${matchForm(m)}`);return}let deleteP=e.target.closest('[data-delete-player]');if(deleteP&&state.admin){let p=state.players.find(x=>x.id===deleteP.dataset.deletePlayer);if(p&&confirm(`حذف اللاعب ${p.name} نهائياً؟`))await guardedRun(deleteP,async()=>{let r=await client.from('players').delete().eq('id',p.id);if(r.error)throw r.error;notify('تم الحذف');await refresh()});return}let deleteM=e.target.closest('[data-delete-match]');if(deleteM&&state.admin){let m=state.matches.find(x=>x.id===deleteM.dataset.deleteMatch);if(m&&confirm(`حذف المباراة أمام ${m.opponent_name} نهائياً؟`))await guardedRun(deleteM,async()=>{let r=await client.from('matches').delete().eq('id',m.id);if(r.error)throw r.error;notify('تم الحذف');await refresh()});return}if(e.target.closest('#refresh-btn')){await refresh();return}if(e.target.closest('#logout-btn')){let r=await client.auth.signOut();if(r.error)notify(mapErr(r.error));state.admin=false;state.user=null;await refresh();go('home')}});
-document.addEventListener('input',e=>{if(e.target.id==='player-search'){state.playerSearch=e.target.value;let pos=e.target.selectionStart;render();let field=document.getElementById('player-search');if(field){field.focus();field.setSelectionRange(pos,pos)}}});
-document.addEventListener('change',e=>{if(e.target.id==='position-filter'){state.playerFilter=e.target.value;render()}});
+document.addEventListener('click',async e=>{
+  if(e.target.closest('[data-show-menu]')){modal('<h2>أقسام الموقع</h2><div class="cms-menu-popup">'+navHtml(false)+'</div>');return}
+  if(e.target.closest('#cms-back-edit')){state.adminTab='studio';state.previewMode=false;go('admin');return}
+  const tab=e.target.closest('[data-cms-tab]');if(tab&&state.admin){state.editorTab=tab.dataset.cmsTab;rerenderCms();return}
+  const move=e.target.closest('[data-cms-navmove]');if(move&&state.admin){const i=Number(move.dataset.index),j=move.dataset.cmsNavmove==='up'?i-1:i+1;if(i>=0&&j>=0&&j<state.draft.navigation.length){[state.draft.navigation[i],state.draft.navigation[j]]=[state.draft.navigation[j],state.draft.navigation[i]];rerenderCms()}return}
+  if(e.target.closest('[data-cms-add-card]')&&state.admin){if(state.draft.homeCards.length<30){state.draft.homeCards.push({title:'بطاقة جديدة',body:'اكتب وصف البطاقة هنا',imageUrl:'',linkText:'',linkUrl:'',visible:true});rerenderCms()}return}
+  const remCard=e.target.closest('[data-cms-remove-card]');if(remCard&&state.admin){if(confirm('حذف هذه البطاقة من المسودة؟')){state.draft.homeCards.splice(Number(remCard.dataset.cmsRemoveCard),1);rerenderCms()}return}
+  if(e.target.closest('[data-cms-add-page]')&&state.admin){if(state.draft.customPages.length>=15){notify('الحد الأقصى 15 صفحة إضافية');return}const id='custom-'+(crypto.randomUUID?.()||Math.random().toString(36).slice(2)).slice(0,12);state.draft.customPages.push({id,title:'صفحة جديدة',subtitle:'',body:'',imageUrl:'',linkText:'',linkUrl:'',visible:true});state.draft.navigation.push({id,icon:'✦',label:'صفحة جديدة',visible:true});rerenderCms();return}
+  const remPage=e.target.closest('[data-cms-remove-page]');if(remPage&&state.admin){const i=Number(remPage.dataset.cmsRemovePage),p=state.draft.customPages[i];if(p&&confirm('حذف هذه الصفحة وتبويبها من المسودة؟')){state.draft.navigation=state.draft.navigation.filter(n=>n.id!==p.id);state.draft.customPages.splice(i,1);rerenderCms()}return}
+  const clear=e.target.closest('[data-cms-clear]');if(clear&&state.admin){setPath(state.draft,clear.dataset.cmsClear,'');rerenderCms();return}
+  if(e.target.closest('#cms-save')&&state.admin){await guardedRun(e.target.closest('button'),saveCms);return}
+  if(e.target.closest('#cms-preview')&&state.admin){state.previewMode=true;go('home');return}
+  if(e.target.closest('#cms-discard')&&state.admin){if(confirm('إلغاء التغييرات غير المنشورة؟')){state.draft=cloneObj(state.config);rerenderCms()}return}
+  if(e.target.closest('#cms-export')&&state.admin){cmsBackup();return}
+  let v=e.target.closest('[data-view]');if(v){go(v.dataset.view);return}let pc=e.target.closest('[data-player]');if(pc){showPlayer(pc.dataset.player);return}let mt=e.target.closest('[data-match]');if(mt){showMatch(mt.dataset.match);return}let close=e.target.closest('[data-close]');if(close&&(e.target===close||e.target.closest('button[data-close]'))){closeModal();return}let adminTab=e.target.closest('[data-admin-tab]');if(adminTab){state.adminTab=adminTab.dataset.adminTab;render();return}let editP=e.target.closest('[data-edit-player]');if(editP&&state.admin){let p=state.players.find(x=>x.id===editP.dataset.editPlayer);if(p)modal(`<h2>تعديل اللاعب</h2>${playerForm(p)}`);return}let editM=e.target.closest('[data-edit-match]');if(editM&&state.admin){let m=state.matches.find(x=>x.id===editM.dataset.editMatch);if(m)modal(`<h2>تعديل المباراة</h2>${matchForm(m)}`);return}let deleteP=e.target.closest('[data-delete-player]');if(deleteP&&state.admin){let p=state.players.find(x=>x.id===deleteP.dataset.deletePlayer);if(p&&confirm(`حذف اللاعب ${p.name} نهائياً؟`))await guardedRun(deleteP,async()=>{let r=await client.from('players').delete().eq('id',p.id);if(r.error)throw r.error;notify('تم الحذف');await refresh()});return}let deleteM=e.target.closest('[data-delete-match]');if(deleteM&&state.admin){let m=state.matches.find(x=>x.id===deleteM.dataset.deleteMatch);if(m&&confirm(`حذف المباراة أمام ${m.opponent_name} نهائياً؟`))await guardedRun(deleteM,async()=>{let r=await client.from('matches').delete().eq('id',m.id);if(r.error)throw r.error;notify('تم الحذف');await refresh()});return}if(e.target.closest('#refresh-btn')){await refresh();return}if(e.target.closest('#logout-btn')){let r=await client.auth.signOut();if(r.error)notify(mapErr(r.error));state.admin=false;state.user=null;await refresh();go('home')}});
+document.addEventListener('input',e=>{if(e.target.dataset.cmsPath && state.admin){const elem=e.target; if(elem.type!=='checkbox')setPath(state.draft,elem.dataset.cmsPath,elem.value);return}if(e.target.id==='player-search'){state.playerSearch=e.target.value;let pos=e.target.selectionStart;render();let field=document.getElementById('player-search');if(field){field.focus();field.setSelectionRange(pos,pos)}}});
+document.addEventListener('change',e=>{if(e.target.dataset.cmsImport&&state.admin){const input=e.target;if(input.files?.[0])guardedRun(input,()=>restoreCmsFile(input.files[0]));return}if(e.target.dataset.cmsUpload&&state.admin){const input=e.target;if(input.files?.[0])guardedRun(input,()=>uploadCmsImage(input.dataset.cmsUpload,input.files[0]));return}if(e.target.dataset.cmsPath&&state.admin){const path=e.target.dataset.cmsPath;setPath(state.draft,path,e.target.type==='checkbox'?e.target.checked:e.target.value);const m=path.match(/^customPages\.(\d+)\.title$/);if(m){const p=state.draft.customPages[Number(m[1])],nav=state.draft.navigation.find(n=>n.id===p?.id);if(nav&&nav.label==='صفحة جديدة')nav.label=p.title||'صفحة جديدة'}return}if(e.target.id==='position-filter'){state.playerFilter=e.target.value;render()}});
 document.addEventListener('submit',async e=>{const form=e.target;if(!['player-form','match-form','login-form'].includes(form.id))return;e.preventDefault();let btn=form.querySelector('[type=submit]');await guardedRun(btn,async()=>{if(form.id==='player-form')return submitPlayer(form);if(form.id==='match-form')return submitMatch(form);if(form.id==='login-form'){const f=new FormData(form);let r=await client.auth.signInWithPassword({email:String(f.get('email')||'').trim(),password:String(f.get('password')||'')});if(r.error)throw r.error;notify('تم تسجيل الدخول');await refresh();if(!state.admin)notify('الحساب ليس ضمن قائمة مديري القلعة.')}})});
+// THE CASTLE FC — configurable public site + manager-only content studio.
+// All saved settings are public-facing data. Never store passwords or secrets here.
+const DEFAULT_SITE = {
+  branding: {
+    arabic: 'القلعة', english: 'THE CASTLE FC', menuTitle: 'عالم القلعة',
+    footer: '© THE CASTLE FC • منصة القلعة الرياضية',
+    facebook: 'https://www.facebook.com/profile.php?id=61594539968482',
+    logoUrl: '', bannerUrl: '',
+    sidebarTitle: 'البيانات الحقيقية',
+    sidebarDescription: 'يتم عرض بيانات اللاعبين والمباريات المحفوظة في قاعدة بيانات النادي.'
+  },
+  theme: {accent:'#2589ff',accentLight:'#63b3ff',background:'#090d15',sidebar:'#0d131e',panel:'#111a28'},
+  texts: {
+    heroTag:'✦ WELCOME TO THE CASTLE',heroStart:'هنا ',heroHighlight:'القلعة،',
+    heroEnd:'وهنا يبدأ المجد.',
+    heroDescription:'بيت القلعة الرقمي: اللاعبون، المباريات، الإنجازات... تاريخنا نكتبه مباراة بعد مباراة.',
+    heroPrimary:'اكتشف نجوم القلعة',heroSecondary:'مركز المباريات',heroCaption:'THE CASTLE • EST. WITH PRIDE',
+    homeNext:'⚡ المباراة القادمة',homeRanking:'🏅 عرش القلعة',homeResults:'⚽ آخر النتائج',
+    kpiPlayers:'اللاعبون',kpiMatches:'المباريات المكتملة',kpiWins:'الانتصارات',kpiGoals:'الأهداف المسجلة',
+    playersTitle:'نجوم القلعة',playersSubtitle:'ملفات اللاعبين الحقيقيين المسجلين بقاعدة بيانات النادي.',
+    rankingTitle:'عرش القلعة',rankingSubtitle:'التقييمات اليدوية المعتمدة من الإدارة — ليست نتائج تلقائية بعد.',
+    matchesTitle:'مركز المباريات',matchesSubtitle:'نتائج ومواعيد فريق القلعة الموثقة بقاعدة البيانات.',
+    fansTitle:'مدرج القلعة',fansSubtitle:'الجمهور جزء من كل انتصار وكل حكاية.',
+    fansHeading:'توقع النتائج والتصويت لنجم المباراة',
+    fansDescription:'راح نفتح التوقعات والتصويت بعد تجهيز نظام يمنع التكرار ويحفظ الأصوات للجميع بشكل آمن. ماكو نتائج أو تصويت تجريبي منشور حالياً.',
+    honorsTitle:'سجل المجد',honorsSubtitle:'كل بطولة وإنجاز يستحق يبقى محفوظاً بتاريخ القلعة.',
+    honorsHeading:'♜ تاريخنا قيد التوثيق',
+    honorsDescription:'راح يظهر هنا سجل البطولات والجوائز بعد إدخال إنجازات الفريق الحقيقية. ما نعرض إنجازات افتراضية.'
+  },
+  sections:{hero:true,summary:true,nextMatch:true,topPlayers:true,recentResults:true,homeCards:true},
+  navigation:[
+    {id:'home',icon:'⌂',label:'الرئيسية',visible:true},
+    {id:'players',icon:'♟',label:'اللاعبون',visible:true},
+    {id:'ranking',icon:'♛',label:'التصنيف',visible:true},
+    {id:'matches',icon:'⚽',label:'المباريات',visible:true},
+    {id:'fans',icon:'♡',label:'الجمهور',visible:true},
+    {id:'honors',icon:'♜',label:'سجل المجد',visible:true},
+    {id:'admin',icon:'⚙',label:'الإدارة',visible:true}
+  ],
+  homeCards:[], customPages:[]
+};
+const EDIT_TEXT_FIELDS = [
+  ['heroTag','الجملة الصغيرة فوق عنوان الرئيسية'],['heroStart','بداية العنوان'],['heroHighlight','الكلمة الزرقاء في العنوان'],
+  ['heroEnd','تكملة العنوان'],['heroDescription','الوصف الموجود تحت العنوان'],['heroPrimary','زر عرض اللاعبين'],
+  ['heroSecondary','زر المباريات'],['heroCaption','النص الإنجليزي أسفل الشعار'],
+  ['kpiPlayers','عنوان إحصائية اللاعبين'],['kpiMatches','عنوان إحصائية المباريات'],['kpiWins','عنوان إحصائية الانتصارات'],['kpiGoals','عنوان إحصائية الأهداف'],
+  ['homeNext','عنوان مربع المباراة القادمة'],['homeRanking','عنوان مربع التصنيف'],['homeResults','عنوان مربع النتائج'],
+  ['playersTitle','عنوان صفحة اللاعبين'],['playersSubtitle','وصف صفحة اللاعبين'],
+  ['rankingTitle','عنوان صفحة التصنيف'],['rankingSubtitle','وصف صفحة التصنيف'],
+  ['matchesTitle','عنوان صفحة المباريات'],['matchesSubtitle','وصف صفحة المباريات'],
+  ['fansTitle','عنوان صفحة الجمهور'],['fansSubtitle','وصف صفحة الجمهور'],
+  ['fansHeading','عنوان قسم التصويت'],['fansDescription','شرح قسم التصويت'],
+  ['honorsTitle','عنوان صفحة الإنجازات'],['honorsSubtitle','وصف صفحة الإنجازات'],
+  ['honorsHeading','عنوان لوحة الإنجازات'],['honorsDescription','محتوى لوحة الإنجازات']
+];
+const EDIT_SECTIONS = [
+  ['hero','الواجهة الكبيرة والشعار'],['summary','أرقام الفريق الإجمالية'],
+  ['nextMatch','مربع المباراة القادمة'],['topPlayers','مربع ترتيب اللاعبين'],
+  ['recentResults','مربع النتائج الأخيرة'],['homeCards','البطاقات التعريفية الإضافية']
+];
+function cloneObj(value){return JSON.parse(JSON.stringify(value))}
+function normalizeSite(data){
+  let c = data && typeof data==='object' && !Array.isArray(data)?data:{};
+  return {
+    branding:{...DEFAULT_SITE.branding,...(c.branding||{})},
+    theme:{...DEFAULT_SITE.theme,...(c.theme||{})},
+    texts:{...DEFAULT_SITE.texts,...(c.texts||{})},
+    sections:{...DEFAULT_SITE.sections,...(c.sections||{})},
+    navigation:Array.isArray(c.navigation)&&c.navigation.length?c.navigation:cloneObj(DEFAULT_SITE.navigation),
+    homeCards:Array.isArray(c.homeCards)?c.homeCards:[],
+    customPages:Array.isArray(c.customPages)?c.customPages:[]
+  };
+}
+function settings(){return state.previewMode&&state.draft?state.draft:(state.config||DEFAULT_SITE)}
+function t(key){return esc(settings().texts[key]??DEFAULT_SITE.texts[key]??'')}
+function siteLogo(){return safeUrl(settings().branding.logoUrl)||LOGO}
+function allowedHex(value,fallback){return /^#[0-9a-fA-F]{6}$/.test(String(value))?value:fallback}
+function navItems(){return settings().navigation.filter(n=>n&&typeof n.id==='string'&&n.visible!==false&&
+  (['home','players','ranking','matches','fans','honors','admin'].includes(n.id)||
+   settings().customPages.some(p=>p.id===n.id&&p.visible!==false)));
+}
+function syncAppearance(){
+  const s=settings(), r=document.documentElement.style;
+  for(const [key,css,def] of [['accent','--blue','#2589ff'],['accentLight','--blue2','#63b3ff'],['background','--bg','#090d15'],['sidebar','--side','#0d131e'],['panel','--panel','#111a28']])
+    r.setProperty(css,allowedHex(s.theme[key],def));
+  const b=s.branding;
+  document.querySelector('.brand h1').textContent=b.arabic||'القلعة';
+  document.querySelector('.brand small').textContent=b.english||'THE CASTLE FC';
+  document.querySelector('.brand img').src=siteLogo();
+  document.querySelector('.menu-label').textContent=b.menuTitle||'';
+  document.querySelector('.side-foot .big').innerHTML='<span class="status"></span> '+esc(b.sidebarTitle||'');
+  document.querySelector('.side-foot p').textContent=b.sidebarDescription||'';
+  const footer=document.querySelector('footer');
+  footer.innerHTML=esc(b.footer||'')+(safeUrl(b.facebook)?' • <a href="'+safeUrl(b.facebook)+'" target="_blank" rel="noopener noreferrer">صفحتنا الرسمية على فيسبوك</a>':'');
+  document.title=(b.english||'THE CASTLE')+' | '+(b.arabic||'القلعة');
+}
+function iconLink(s){return esc(String(s??'').slice(0,6))}
+function cardMarkup(card){
+  const url=safeUrl(card.linkUrl),img=safeUrl(card.imageUrl);
+  return `<article class="cms-card">${img?`<img loading="lazy" src="${img}" alt="${esc(card.title||'')}">`:''}<div class="cms-card-body"><h3>${esc(card.title||'')}</h3><p>${esc(card.body||'')}</p>${url&&card.linkText?`<a href="${url}" rel="noopener noreferrer" target="_blank" class="btn sm">${esc(card.linkText)} ↗</a>`:''}</div></article>`;
+}
+function homeExtraCards(){const a=settings().homeCards.filter(x=>x.visible!==false);return settings().sections.homeCards&&a.length?`<div class="cms-card-grid">${a.map(cardMarkup).join('')}</div>`:''}
+function customPage(){const p=settings().customPages.find(x=>x.id===state.view);
+  if(!p||p.visible===false) return empty('هذه الصفحة غير متاحة حالياً.');
+  return `${title(esc(p.title||'صفحة جديدة'),esc(p.subtitle||''))}<div class="panel cms-custom"><div>${safeUrl(p.imageUrl)?`<img class="cms-page-image" src="${safeUrl(p.imageUrl)}" alt="${esc(p.title||'')}">`:''}<div class="cms-body">${esc(p.body||'')}</div>${safeUrl(p.linkUrl)&&p.linkText?`<a class="btn primary" href="${safeUrl(p.linkUrl)}" rel="noopener noreferrer" target="_blank">${esc(p.linkText)}</a>`:''}</div></div>`;
+}
+function cmsField(label,path,value,opts={}){
+  const v=esc(value==null?'':String(value)),attr=`data-cms-path="${esc(path)}"`,max=opts.max||500;
+  const input=opts.type==='textarea'?`<textarea ${attr} maxlength="${max}" rows="${opts.rows||3}">${v}</textarea>`:
+   opts.type==='checkbox'?`<input ${attr} type="checkbox" ${value?'checked':''}>`:
+   opts.type==='color'?`<input ${attr} type="color" value="${allowedHex(value,'#2589ff')}">`:
+   `<input ${attr} type="text" maxlength="${max}" value="${v}" placeholder="${esc(opts.placeholder||'')}">`;
+  return `<label class="cms-field ${opts.type==='checkbox'?'cms-check':''}"><span>${esc(label)}</span>${input}</label>`;
+}
+function cmsUpload(label,target,preview){return `<div class="cms-field"><span>${esc(label)} — JPG/PNG/WebP حتى 3MB</span><input type="file" accept="image/jpeg,image/png,image/webp" data-cms-upload="${esc(target)}">${safeUrl(preview)?`<img class="cms-image-thumb" src="${safeUrl(preview)}" alt="معاينة الصورة">`:''}</div>`}
+function cmsEditor(){if(!state.draft)state.draft=cloneObj(state.config||DEFAULT_SITE);
+  const d=state.draft;
+  const tabs=[['texts','النصوص'],['nav','التبويبات'],['sections','الأقسام'],['theme','الهوية'],['cards','بطاقات الرئيسية'],['pages','صفحات جديدة']];
+  let editor='';
+  if(state.editorTab==='texts'){
+    editor=`<div class="cms-grid">${EDIT_TEXT_FIELDS.map(([k,v])=>cmsField(v,'texts.'+k,d.texts[k],{type:/Description|Subtitle/i.test(k)?'textarea':'text',max:1200})).join('')}</div>`;
+  } else if(state.editorTab==='nav'){
+    editor=`<p class="muted">غيّر الاسم أو الرمز، واختر إظهار/إخفاء. الأسهم تغيّر ترتيب العناصر. تبويب الإدارة يبقى متاحاً من الزر العلوي أيضاً.</p>
+      <div class="cms-stack">${d.navigation.map((n,i)=>`<div class="cms-item" data-cms-index="${i}"><div class="cms-item-bar"><strong>${esc(n.id)}</strong><div class="cms-inline"><button class="btn sm" data-cms-navmove="up" data-index="${i}" ${i===0?'disabled':''}>↑</button><button class="btn sm" data-cms-navmove="down" data-index="${i}" ${i===d.navigation.length-1?'disabled':''}>↓</button></div></div><div class="cms-navfields">${cmsField('اسم التبويب',`navigation.${i}.label`,n.label,{max:50})}${cmsField('الرمز أو الإيموجي',`navigation.${i}.icon`,n.icon,{max:6})}${cmsField('ظاهر للزوار',`navigation.${i}.visible`,n.visible!==false,{type:'checkbox'})}</div></div>`).join('')}</div>`;
+  } else if(state.editorTab==='sections'){
+    editor=`<div class="cms-grid">${EDIT_SECTIONS.map(([k,v])=>cmsField(v,'sections.'+k,d.sections[k]!==false,{type:'checkbox'})).join('')}</div>`;
+  } else if(state.editorTab==='theme'){
+    editor=`<div class="cms-grid">${cmsField('اسم الفريق بالعربية','branding.arabic',d.branding.arabic,{max:75})}${cmsField('الاسم بالإنجليزية','branding.english',d.branding.english,{max:75})}${cmsField('اسم مجموعة القائمة','branding.menuTitle',d.branding.menuTitle,{max:75})}${cmsField('عبارة تذييل الموقع','branding.footer',d.branding.footer,{max:200})}${cmsField('وصف جانب القائمة','branding.sidebarDescription',d.branding.sidebarDescription,{type:'textarea'})}${cmsField('عنوان صندوق جانب القائمة','branding.sidebarTitle',d.branding.sidebarTitle,{max:100})}${cmsField('رابط فيسبوك','branding.facebook',d.branding.facebook,{max:300})}${cmsField('الأزرق الرئيسي','theme.accent',d.theme.accent,{type:'color'})}${cmsField('الأزرق الفاتح','theme.accentLight',d.theme.accentLight,{type:'color'})}${cmsField('الخلفية','theme.background',d.theme.background,{type:'color'})}${cmsField('لون القائمة الجانبية','theme.sidebar',d.theme.sidebar,{type:'color'})}${cmsField('لون البطاقات','theme.panel',d.theme.panel,{type:'color'})}</div><div class="cms-grid">${cmsUpload('صورة خلفية الواجهة (اختياري)','branding.bannerUrl',d.branding.bannerUrl)}${cmsUpload('استبدال الشعار (اختياري — يظل الأصلي افتراضياً)','branding.logoUrl',d.branding.logoUrl)}</div><p class="muted">يمكنك إزالة صورة الخلفية أو العودة إلى الشعار الأصلي باستخدام زري الإزالة أدناه.</p><div class="cms-inline"><button class="btn sm" data-cms-clear="branding.bannerUrl">حذف صورة الخلفية</button><button class="btn sm" data-cms-clear="branding.logoUrl">العودة للشعار الأصلي</button></div>`;
+  } else if(state.editorTab==='cards'){
+    editor=`<p class="muted">هذه بطاقات إضافية تظهر بالصفحة الرئيسية ويمكن نشر رابط وصورة لكل بطاقة.</p><button class="btn sm primary" data-cms-add-card>+ إضافة بطاقة</button><div class="cms-stack">${d.homeCards.map((c,i)=>`<div class="cms-item"><div class="cms-item-bar"><strong>بطاقة ${i+1}</strong><button class="btn sm" data-cms-remove-card="${i}">حذف</button></div><div class="cms-grid">${cmsField('العنوان',`homeCards.${i}.title`,c.title,{max:120})}${cmsField('نص البطاقة',`homeCards.${i}.body`,c.body,{type:'textarea',max:2000})}${cmsField('نص الزر',`homeCards.${i}.linkText`,c.linkText,{max:60})}${cmsField('رابط الزر',`homeCards.${i}.linkUrl`,c.linkUrl,{max:500})}${cmsField('إظهار البطاقة',`homeCards.${i}.visible`,c.visible!==false,{type:'checkbox'})}${cmsUpload('صورة البطاقة',`homeCards.${i}.imageUrl`,c.imageUrl)}</div></div>`).join('')}</div>`;
+  } else if(state.editorTab==='pages'){
+    editor=`<p class="muted">تضيف صفحة معلوماتية بقائمتها الخاصة (عن الفريق، التاريخ، القوانين...)، بدون برمجة. الصفحات التي تحتاج وظائف جديدة تظل تتطلب تطويراً.</p><button class="btn sm primary" data-cms-add-page>+ صفحة جديدة</button><div class="cms-stack">${d.customPages.map((p,i)=>`<div class="cms-item"><div class="cms-item-bar"><strong>${esc(p.title||'صفحة جديدة')}</strong><button class="btn sm" data-cms-remove-page="${i}">حذف الصفحة</button></div><div class="cms-grid">${cmsField('عنوان الصفحة',`customPages.${i}.title`,p.title,{max:100})}${cmsField('العنوان الفرعي',`customPages.${i}.subtitle`,p.subtitle,{max:240})}${cmsField('محتوى الصفحة',`customPages.${i}.body`,p.body,{type:'textarea',rows:7,max:9000})}${cmsField('نص الزر',`customPages.${i}.linkText`,p.linkText,{max:70})}${cmsField('رابط الزر',`customPages.${i}.linkUrl`,p.linkUrl,{max:500})}${cmsField('نشر الصفحة',`customPages.${i}.visible`,p.visible!==false,{type:'checkbox'})}${cmsUpload('صورة الصفحة',`customPages.${i}.imageUrl`,p.imageUrl)}</div></div>`).join('')}</div>`;
+  }
+  return `<section class="panel cms-editor"><div class="panel-head"><div><div class="eyebrow">THE CASTLE • CONTENT STUDIO</div><h3>استوديو إدارة الموقع</h3></div><span class="pill">تخصيص المظهر والمحتوى</span></div>
+  <p class="muted">تغييراتك تبقى مسودة على جهازك إلى أن تضغط «نشر التغييرات». اختَر «معاينة» لمشاهدتها قبل النشر.</p>
+  <div class="cms-tabs">${tabs.map(([id,label])=>`<button class="btn sm ${id===state.editorTab?'active':''}" data-cms-tab="${id}">${label}</button>`).join('')}</div>
+  <div class="cms-editor-body">${editor}</div><div class="cms-actions"><button class="btn primary" id="cms-save" type="button">✓ نشر التغييرات للجميع</button><button class="btn" id="cms-preview" type="button">◉ معاينة قبل النشر</button><button class="btn ghost" id="cms-discard" type="button">إلغاء تعديلات المسودة</button><button class="btn ghost" id="cms-export" type="button">نسخة احتياطية JSON</button><label class="btn ghost" style="cursor:pointer">استيراد نسخة محفوظة <input type="file" data-cms-import accept=".json,application/json" hidden></label></div>
+  <p class="tiny">لا تضع أسراراً أو كلمات مرور داخل النصوص؛ كل ما تنشره هنا يُعرض للزوار. لن تتأثر سجلات اللاعبين والمباريات.</p></section>`;
+}
+function setPath(obj,path,value){let seg=path.split('.'),v=obj;for(let i=0;i<seg.length-1;i++){if(!v||!Object.hasOwn(v,seg[i]))return;v=v[seg[i]]}if(v&&Object.hasOwn(v,seg.at(-1)))v[seg.at(-1)]=value}
+function rerenderCms(){state.view='admin';state.previewMode=false;render()}
+async function saveCms(){if(!state.admin||!state.draft)throw new Error('تسجيل الدخول مطلوب');
+  const cfg=cloneObj(state.draft);
+  if(cfg.navigation.length>20||cfg.homeCards.length>30||cfg.customPages.length>15)throw new Error('تم تجاوز حدود صفحات وأقسام الموقع');
+  const payload=JSON.stringify(cfg);
+  if(new TextEncoder().encode(payload).length>200000)throw new Error('المحتوى كبير جداً. قلّل النصوص أو الصور المضمّنة.');
+  const r=await client.from('site_settings').update({config:cfg,version:state.configVersion+1,updated_at:new Date().toISOString()})
+    .eq('id',1).eq('version',state.configVersion).select('version').single();
+  if(r.error)throw new Error(r.error.message?.includes('0 rows')?'حدث تعديل من جلسة أخرى، اضغط تحديث البيانات وراجع التغييرات.':r.error.message);
+  state.config=normalizeSite(cfg);state.configVersion=r.data.version;state.draft=cloneObj(cfg);state.previewMode=false;
+  notify('تم نشر إعدادات الموقع بنجاح لكل الزوار');render();
+}
+async function uploadCmsImage(path,file){if(!state.admin)throw new Error('ليس لديك صلاحية رفع الملفات');
+  if(!file||!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('الصيغة المطلوبة JPG أو PNG أو WebP');
+  if(file.size>3*1024*1024)throw new Error('الحد الأقصى للصورة 3MB');
+  const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[file.type];
+  const p='site/'+crypto.randomUUID()+'.'+ext;
+  const r=await client.storage.from('castle-site-assets').upload(p,file,{contentType:file.type,upsert:false});
+  if(r.error)throw r.error;
+  const publicUrl=client.storage.from('castle-site-assets').getPublicUrl(p).data.publicUrl;
+  setPath(state.draft,path,publicUrl);notify('رُفعت الصورة. اضغط «نشر التغييرات» حتى تظهر للجميع.');rerenderCms();
+}
+function cmsBackup(){const blob=new Blob([JSON.stringify(state.draft,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='the-castle-settings-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+
+async function restoreCmsFile(file){
+ if(!state.admin||!file)throw new Error('إدارة الموقع فقط');
+ if(file.size>250000)throw new Error('ملف الإعدادات كبير جداً');
+ let input;
+ try{input=JSON.parse(await file.text())}catch{throw new Error('ملف JSON غير صالح')}
+ if(!input||typeof input!=='object'||Array.isArray(input))throw new Error('صيغة الملف غير صحيحة');
+ state.draft=normalizeSite(input);state.previewMode=false;notify('تم تحميل النسخة الاحتياطية كمسودة فقط؛ راجعها ثم انشرها.');rerenderCms();
+}
+
 (async function boot(){if(!window.supabase?.createClient){state.error='مكتبة Supabase غير متوفرة. تأكد من اتصال الإنترنت';state.loading=false;render();return}client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);await refresh()})();
 </script></body></html>
