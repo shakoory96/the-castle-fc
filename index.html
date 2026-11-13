@@ -57,8 +57,8 @@
 .cms-adaptive:not(:has(> :nth-child(2))){grid-template-columns:1fr}
 @media(max-width:860px){.cms-grid{grid-template-columns:1fr}.cms-navfields{grid-template-columns:1fr 1fr}.cms-navfields .cms-check{grid-column:1/-1}.cms-editor{padding:15px}.cms-tabs .btn{flex:1}}
 @media(max-width:480px){.cms-navfields{grid-template-columns:1fr}.cms-actions .btn{width:100%}.cms-card-grid{grid-template-columns:1fr}}
-</style><link rel="stylesheet" href="castle-phase1.css"><link rel="stylesheet" href="castle-gate.css"></head>
-<body><div class="app"><aside class="sidebar"><div class="brand"><img src="official_castle_logo.jpg" alt="الشعار الرسمي لفريق القلعة"><div><h1>القلعة</h1><small>THE CASTLE FC</small></div></div><div class="menu-label">عالم القلعة</div><nav class="side-nav" id="desktop-nav"></nav><div class="side-foot"><div class="big"><span class="status"></span> البيانات الحقيقية</div><p>يتم عرض بيانات اللاعبين والمباريات المحفوظة في قاعدة بيانات النادي.</p></div></aside><div class="main-wrap"><header class="topbar"><div class="trail"><span class="mobile-only" style="font-size:20px;color:#63b3ff">♜</span><span>THE CASTLE</span><span>‹</span><b id="bread">الرئيسية</b></div><div class="top-actions"><span class="beta">● LIVE DATA</span><button class="btn sm ghost" data-view="admin">⚙ <span class="hide-small">الإدارة</span></button></div></header><main class="content"><div id="status-notice" class="notice" role="status"></div><div id="screen" aria-live="polite"></div><footer>© THE CASTLE FC • منصة القلعة الرياضية • <a href="https://www.facebook.com/profile.php?id=61594539968482" rel="noopener noreferrer" target="_blank">صفحتنا الرسمية على فيسبوك</a></footer></main></div></div><nav class="mobile-bottom" id="mobile-nav"></nav><div id="drawer"></div><div id="overlay"></div><div class="toast" id="toast" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="castle-phase1.js"></script><script src="castle-gate.js"></script><script>'use strict';
+</style><link rel="stylesheet" href="castle-phase1.css"></head>
+<body><div class="app"><aside class="sidebar"><div class="brand"><img src="official_castle_logo.jpg" alt="الشعار الرسمي لفريق القلعة"><div><h1>القلعة</h1><small>THE CASTLE FC</small></div></div><div class="menu-label">عالم القلعة</div><nav class="side-nav" id="desktop-nav"></nav><div class="side-foot"><div class="big"><span class="status"></span> البيانات الحقيقية</div><p>يتم عرض بيانات اللاعبين والمباريات المحفوظة في قاعدة بيانات النادي.</p></div></aside><div class="main-wrap"><header class="topbar"><div class="trail"><span class="mobile-only" style="font-size:20px;color:#63b3ff">♜</span><span>THE CASTLE</span><span>‹</span><b id="bread">الرئيسية</b></div><div class="top-actions"><span class="beta">● LIVE DATA</span><button class="btn sm ghost" data-view="admin">⚙ <span class="hide-small">الإدارة</span></button></div></header><main class="content"><div id="status-notice" class="notice" role="status"></div><div id="screen" aria-live="polite"></div><footer>© THE CASTLE FC • منصة القلعة الرياضية • <a href="https://www.facebook.com/profile.php?id=61594539968482" rel="noopener noreferrer" target="_blank">صفحتنا الرسمية على فيسبوك</a></footer></main></div></div><nav class="mobile-bottom" id="mobile-nav"></nav><div id="drawer"></div><div id="overlay"></div><div class="toast" id="toast" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="castle-phase1.js"></script><script>'use strict';
 const SUPABASE_URL='https://sfjqaeqabzhnikifpqki.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_lFw3vmM2_NXy8_HCC07EQQ_hK0fQmwo';
 const LOGO='official_castle_logo.jpg';
@@ -81,7 +81,7 @@ function navHtml(mobile=false){const links=(mobile?NAV.slice(0,4):NAV).map(([id,
 function home(){
   const st=stats(),up=matchesSorted().filter(m=>m.status==='scheduled'&&m.match_date>=(new Date().toLocaleDateString('en-CA'))).sort((a,b)=>a.match_date.localeCompare(b.match_date))[0],past=matchesSorted().filter(m=>m.status==='completed').slice(0,3),c=settings(),sections=c.sections;
   const banner=safeUrl(c.branding.bannerUrl);
-  return `${sections.castleGate?castleGateSection():''}${sections.hero?`<section class="hero">${banner?`<img class="cms-hero-back" src="${banner}" alt="" aria-hidden="true">`:''}<div class="hero-copy"><div class="pill">${t('heroTag')}</div><h2>${t('heroStart')}<em>${t('heroHighlight')}</em><br>${t('heroEnd')}</h2><p>${t('heroDescription')}</p><div class="hero-actions"><button class="btn primary" data-view="players">${t('heroPrimary')} ←</button><button class="btn ghost" data-view="matches">⚽ ${t('heroSecondary')}</button></div></div><div class="hero-art"><div class="hero-ring"></div><img src="${siteLogo()}" alt="شعار القلعة"><div class="hero-caption">${t('heroCaption')}</div></div></section>`:''}
+  return `${sections.hero?`<section class="hero">${banner?`<img class="cms-hero-back" src="${banner}" alt="" aria-hidden="true">`:''}<div class="hero-copy"><div class="pill">${t('heroTag')}</div><h2>${t('heroStart')}<em>${t('heroHighlight')}</em><br>${t('heroEnd')}</h2><p>${t('heroDescription')}</p><div class="hero-actions"><button class="btn primary" data-view="players">${t('heroPrimary')} ←</button><button class="btn ghost" data-view="matches">⚽ ${t('heroSecondary')}</button></div></div><div class="hero-art"><div class="hero-ring"></div><img src="${siteLogo()}" alt="شعار القلعة"><div class="hero-caption">${t('heroCaption')}</div></div></section>`:''}
   ${castleMatchdaySpotlight()}
   ${sections.summary?`<div class="kpis"><div class="kpi"><div><div class="lbl">${t('kpiPlayers')}</div><div class="num">${fmt(state.players.filter(p=>p.is_active!==false).length)}</div></div><span class="ico">♟</span></div><div class="kpi"><div><div class="lbl">${t('kpiMatches')}</div><div class="num">${fmt(st.played)}</div></div><span class="ico">⚽</span></div><div class="kpi"><div><div class="lbl">${t('kpiWins')}</div><div class="num">${fmt(st.wins)}</div></div><span class="ico">🏆</span></div><div class="kpi"><div><div class="lbl">${t('kpiGoals')}</div><div class="num">${fmt(st.goals)}</div></div><span class="ico">◎</span></div></div>`:''}
   ${sections.nextMatch?`<div class="panel" style="margin-top:20px"><div class="panel-head"><h3>${t('homeNext')}</h3><button class="sub-link" data-view="matches">${t('heroSecondary')} ←</button></div>${up?fixture(up):empty('ماكو مباراة قادمة مسجلة حالياً.')}</div>`:''}
@@ -151,7 +151,6 @@ const DEFAULT_SITE = {
   },
   theme: {accent:'#2589ff',accentLight:'#63b3ff',background:'#090d15',sidebar:'#0d131e',panel:'#111a28'},
   texts: {
-    gateTitle:'بوابة',gateHighlight:'القلعة',gateDescription:'اضغط وافتح البوابة، اكتشف لاعباً من الفريق أو تعرّف على مباراتنا القادمة وشارك الحماس ويا أصدقائك.',
     heroTag:'✦ WELCOME TO THE CASTLE',heroStart:'هنا ',heroHighlight:'القلعة،',
     heroEnd:'وهنا يبدأ المجد.',
     heroDescription:'بيت القلعة الرقمي: اللاعبون، المباريات، الإنجازات... تاريخنا نكتبه مباراة بعد مباراة.',
@@ -167,7 +166,7 @@ const DEFAULT_SITE = {
     honorsHeading:'♜ تاريخنا قيد التوثيق',
     honorsDescription:'راح يظهر هنا سجل البطولات والجوائز بعد إدخال إنجازات الفريق الحقيقية. ما نعرض إنجازات افتراضية.'
   },
-  sections:{castleGate:true,hero:true,summary:true,nextMatch:true,recentResults:true,homeCards:true},
+  sections:{hero:true,summary:true,nextMatch:true,recentResults:true,homeCards:true},
   navigation:[
     {id:'home',icon:'⌂',label:'الرئيسية',visible:true},
     {id:'players',icon:'♟',label:'اللاعبون',visible:true},
@@ -180,7 +179,6 @@ const DEFAULT_SITE = {
   homeCards:[], customPages:[]
 };
 const EDIT_TEXT_FIELDS = [
-  ['gateTitle','عنوان بوابة القلعة'],['gateHighlight','الكلمة الزرقاء في البوابة'],['gateDescription','وصف بوابة القلعة'],
   ['heroTag','الجملة الصغيرة فوق عنوان الرئيسية'],['heroStart','بداية العنوان'],['heroHighlight','الكلمة الزرقاء في العنوان'],
   ['heroEnd','تكملة العنوان'],['heroDescription','الوصف الموجود تحت العنوان'],['heroPrimary','زر عرض اللاعبين'],
   ['heroSecondary','زر المباريات'],['heroCaption','النص الإنجليزي أسفل الشعار'],
@@ -194,7 +192,6 @@ const EDIT_TEXT_FIELDS = [
   ['honorsHeading','عنوان لوحة الإنجازات'],['honorsDescription','محتوى لوحة الإنجازات']
 ];
 const EDIT_SECTIONS = [
-  ['castleGate','بوابة القلعة التفاعلية في أعلى الرئيسية'],
   ['hero','الواجهة الكبيرة والشعار'],['summary','أرقام الفريق الإجمالية'],
   ['nextMatch','مربع المباراة القادمة'],
   ['recentResults','مربع النتائج الأخيرة'],['homeCards','البطاقات التعريفية الإضافية']
