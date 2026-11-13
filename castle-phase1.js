@@ -113,9 +113,9 @@ function lineupAdmin(){
  if(!state.matches.length)return '<section class="panel"><h3>تشكيلة القلعة السباعية</h3>'+empty('سجّل مباراة أولاً من قسم إدارة المباريات حتى تگدر تختار التشكيلة.')+'</section>';
  var slots=castleLineupPositions(draft.formation),active=state.players.filter(function(p){return p.is_active!==false});
  var selects=slots.map(function(slot){
-   return '<label class="field"><label>'+esc(slot.title)+' '+fmt(slot.index+1)+'</label><select data-castle-slot="'+slot.index+'">'+
+   return '<div class="field"><label>'+esc(slot.title)+' '+fmt(slot.index+1)+'</label><select data-castle-slot="'+slot.index+'">'+
      '<option value="">اختر لاعباً</option>'+active.map(function(p){return '<option value="'+esc(p.id)+'"'+(draft.players[slot.index]===p.id?' selected':'')+'>'+esc(p.name)+(p.jersey_number!=null?' (#'+fmt(p.jersey_number)+')':'')+'</option>'}).join('')+
-   '</select></label>';
+   '</select></div>';
  }).join('');
  return '<section class="panel"><div class="panel-head"><h3>التشكيلة السباعية • MATCHDAY</h3><span class="badge-status">7 لاعبين بينهم الحارس</span></div>'+
  '<p class="muted">اختَر المباراة والخطة وسبعة لاعبين مختلفين، ثم احفظ التشكيلة. لن تظهر للجمهور إلا بعد حفظها.</p>'+
