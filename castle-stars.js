@@ -81,7 +81,7 @@ function castleStarsAutoTick(){
   if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
   const area=rail.closest('.castle-stars');
   if(area&&window.matchMedia?.('(hover: hover)').matches&&area.matches(':hover'))return;
-  if(area&&area.contains(document.activeElement))return;
+  if(area&&area.querySelector(':focus-visible'))return;
   const rect=rail.getBoundingClientRect();
   if(rect.bottom<0||rect.top>window.innerHeight)return;
   castleStarsSetupLoop(rail);
