@@ -10,9 +10,9 @@ function castleStarsCarousel(){
     const jersey=p.jersey_number==null?'—':fmt(p.jersey_number);
     const portrait=photo?'<img src="'+photo+'" alt="صورة اللاعب '+esc(p.name)+'" loading="lazy" decoding="async">':'<span class="castle-star-silhouette" aria-hidden="true">♟</span>';
     return '<button class="castle-star-card" type="button" data-player="'+esc(p.id)+'" aria-label="عرض ملف اللاعب '+esc(p.name)+'">'+
-      '<div class="castle-star-photo">'+portrait+'<span class="castle-star-jersey">#'+jersey+'</span></div>'+
+      '<div class="castle-star-photo"><span class="castle-star-ghost" aria-hidden="true">#'+jersey+'</span>'+portrait+'<span class="castle-star-jersey">#'+jersey+'</span></div>'+
       '<div class="castle-star-info"><span class="castle-star-name">'+esc(p.name)+'</span>'+
-      '<span class="castle-star-position">'+esc(p.position||'لاعب القلعة')+'</span></div></button>';
+      '<span class="castle-star-position">'+esc(p.position||'لاعب القلعة')+'</span>'+'<span class="castle-star-bottom"><span class="castle-star-award">'+castlePlayerRoleBadge(p)+'</span><span class="castle-star-open">عرض البطاقة ←</span></span></div></button>';
   }).join('');
   return '<section class="castle-stars" aria-labelledby="castle-stars-title">'+
     '<header class="castle-stars-header"><div class="castle-stars-heading"><div class="castle-stars-eyebrow">THE CASTLE · OUR PLAYERS</div>'+
