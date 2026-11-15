@@ -1,0 +1,78 @@
+/* THE CASTLE — mobile-focused refresh. Desktop retains approved layout. */
+.mobile-fixture-card{display:none}
+@media(max-width:660px){
+  /* Keep the original approved crest and hero messaging in a compact balanced layout. */
+  .content{padding:12px 13px calc(98px + env(safe-area-inset-bottom))}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 112px;align-items:center;min-height:176px;border-radius:20px;box-shadow:0 15px 36px #01060c36}
+  .hero-copy{grid-column:1;grid-row:1;padding:18px 17px 20px 8px}
+  .hero-art{grid-column:2;grid-row:1;height:145px;padding:10px 5px;overflow:visible}
+  .hero-art img{width:88px;max-width:100%;border-radius:50%;filter:drop-shadow(0 8px 20px #0007);object-fit:contain}
+  .hero-ring{width:113px;height:113px;box-shadow:0 0 0 12px #1b72cd0e,0 0 0 28px #1b72cd08}
+  .hero-caption{display:none}
+  .hero .pill{font-size:9px;padding:3px 9px;max-width:100%;letter-spacing:0}
+  .hero h2{font-size:clamp(21px,6.3vw,29px);line-height:1.3;letter-spacing:-.5px;margin:7px 0}
+  .hero h2 br{display:none}
+  .hero p{font-size:10.5px;line-height:1.75;margin:0 0 12px;max-width:260px}
+  .hero-actions{gap:6px}
+  .hero-actions .btn{min-height:35px;font-size:10px;padding:6px 9px;border-radius:9px}
+  /* Place a single premium score/fixture panel immediately after the hero. */
+  .mobile-fixture-card{display:block;position:relative;overflow:hidden;margin:13px 0 16px;padding:15px 16px 13px;border:1px solid #3377b68f;border-radius:18px;background:radial-gradient(circle at 50% -45%,#1c76c66b,transparent 65%),linear-gradient(145deg,#122a49,#101c2d);box-shadow:0 8px 26px #0003}
+  .mobile-fixture-card:before{content:"";position:absolute;left:-36px;top:-80px;width:210px;height:210px;border:1px solid #5dbbff1c;border-radius:50%;pointer-events:none}
+  .mobile-fixture-top{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative}
+  .mobile-fixture-kicker{font-size:9px;letter-spacing:1.5px;color:#78c0ff;font-weight:900;direction:ltr;white-space:nowrap}
+  .mobile-fixture-status{border:1px solid #4e96cf55;border-radius:30px;background:#113e6966;padding:3px 10px;color:#c5e6ff;font-size:10px;font-weight:800}
+  .mobile-fixture-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:9px;margin:13px 0 9px}
+  .mobile-fixture-team{min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px}
+  .mobile-fixture-team img,.mobile-fixture-opponent-icon{width:52px;height:52px;object-fit:contain;display:grid;place-items:center}
+  .mobile-fixture-opponent-icon{font-size:35px;color:#77bfff;border:1px solid #2d628e;border-radius:50%;background:#102c4c}
+  .mobile-fixture-team strong{color:#f6faff;font-size:12px;font-weight:900;line-height:1.5;overflow-wrap:anywhere}
+  .mobile-fixture-center{text-align:center;min-width:52px}
+  .mobile-fixture-score{display:block;direction:ltr;font-size:clamp(25px,7vw,35px);font-weight:900;line-height:1.1;color:#fff;font-variant-numeric:tabular-nums}
+  .mobile-fixture-center small{display:block;color:#78b8ee;font-size:8px;font-weight:900;letter-spacing:1px;margin-top:6px}
+  .mobile-fixture-meta{text-align:center;font-size:10.5px;color:#b1cde5;margin:8px 0 12px;line-height:1.6}
+  .mobile-fixture-action{position:relative;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;background:#1e7de5;border:1px solid #4ba9ff;border-radius:10px;min-height:39px;font-size:12px;font-weight:900}
+  .mobile-fixture-action:active{background:#369dff}
+  /* Duplicate matchday features are removed ONLY from the mobile home. */
+  .home-screen .matchday-spotlight,.home-screen .home-next-panel{display:none}
+  /* Existing player strip remains MANUAL-ONLY. Show a peek of the next card. */
+  .home-screen .castle-stars{margin:15px 0 18px;padding:13px 0 15px}
+  .home-screen .castle-stars-header{margin-bottom:10px}
+  .home-screen .castle-stars-heading h3{font-size:21px;margin:2px 0}
+  .home-screen .castle-stars-heading p{font-size:10.5px;line-height:1.5}
+  .home-screen .castle-stars-eyebrow{font-size:8px;letter-spacing:1.25px}
+  .home-screen .castle-stars-rail{gap:9px;overflow-x:auto;scroll-snap-type:x mandatory}
+  .home-screen .castle-star-card{flex:0 0 134px;border-radius:15px}
+  .home-screen .castle-star-photo{height:131px}
+  .home-screen .castle-star-info{min-height:62px;padding:9px 11px}
+  .home-screen .castle-star-name{font-size:13px}
+  .home-screen .castle-star-position{font-size:10px}
+  .home-screen .castle-star-jersey{font-size:14px;min-width:30px;min-height:25px}
+  .home-screen .castle-stars-arrow{min-width:39px;min-height:39px;font-size:23px}
+  .home-screen .castle-stars-hint{font-size:9px}
+  /* More purposeful mobile bottom navigation. */
+  .topbar{height:58px;padding:0 14px}
+  .top-actions .beta{display:none}
+  .trail{font-size:11px}
+  .top-actions [data-view="admin"]{min-height:36px;font-size:11px;padding:6px 9px}
+  .mobile-bottom{gap:4px;padding:7px max(8px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));background:#0a1525f8;border-top:1px solid #315d87}
+  .mobile-bottom button{min-height:56px;gap:3px;padding:7px 1px;border-radius:13px;min-width:0}
+  .mobile-bottom button .mi{font-size:21px;line-height:1.1}
+  .mobile-bottom button small{font-size:10px;white-space:nowrap}
+  .mobile-bottom button.active{background:linear-gradient(180deg,#17477a,#12365f);color:#fff;box-shadow:inset 0 0 0 1px #3b8ad280}
+  .mobile-bottom button.active .mi{color:#8bc9ff}
+  .mobile-bottom button:focus-visible{outline:2px solid #75c4ff;outline-offset:-2px}
+  .kpis{margin:16px 0 22px;gap:8px}
+  .kpi{padding:12px}
+  .kpi .num{font-size:23px}
+}
+@media(max-width:385px){
+  .hero{grid-template-columns:minmax(0,1fr) 94px}
+  .hero-copy{padding:17px 10px 17px 6px}
+  .hero h2{font-size:21px}
+  .hero-art img{width:70px}
+  .hero-ring{width:95px;height:95px}
+  .hero-actions .btn{font-size:9px;padding:5px 7px}
+  .mobile-bottom button small{font-size:9px}
+  .mobile-fixture-row{gap:5px}
+}
+@media(prefers-reduced-motion:reduce){.mobile-fixture-card *{transition:none!important}}
