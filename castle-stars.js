@@ -1,4 +1,5 @@
 /* THE CASTLE FC — roster carousel. Uses current Supabase-backed player records only. */
+let castleStarsManuallyPaused=false;
 function castleStarsCarousel(){
   const roster=state.players.filter(p=>p.is_active!==false).slice().sort((a,b)=>{
     const n=p=>p.jersey_number==null?9999:Number(p.jersey_number);
@@ -18,16 +19,18 @@ function castleStarsCarousel(){
     '<header class="castle-stars-header"><div class="castle-stars-heading"><div class="castle-stars-eyebrow">THE CASTLE · OUR PLAYERS</div>'+
     '<h3 id="castle-stars-title">'+t('starsTitle')+'</h3><p>'+t('starsSubtitle')+'</p></div>'+
     '<div class="castle-stars-arrows">'+
+    '<button class="castle-stars-arrow castle-stars-pause" type="button" id="castle-stars-toggle" aria-label="'+(castleStarsManuallyPaused?'تشغيل الحركة التلقائية':'إيقاف الحركة التلقائية')+'" title="'+(castleStarsManuallyPaused?'تشغيل الحركة':'إيقاف الحركة')+'" aria-pressed="'+castleStarsManuallyPaused+'">'+(castleStarsManuallyPaused?'▶':'Ⅱ')+'</button>'+
     '<button class="castle-stars-arrow" type="button" data-castle-stars-step="-1" aria-label="اللاعب السابق" title="السابق">›</button>'+
     '<button class="castle-stars-arrow" type="button" data-castle-stars-step="1" aria-label="اللاعب التالي" title="التالي">‹</button>'+
     '</div></header>'+
     '<div id="castle-stars-rail" class="castle-stars-rail" tabindex="0" role="region" aria-roledescription="شريط أفقي" aria-label="بطاقات لاعبي القلعة، اسحب أفقياً لعرض المزيد">'+cards+'</div>'+
     '<div class="castle-stars-hint"><span>اسحب يمين ويسار لاستعراض نجوم القلعة</span><span>'+fmt(roster.length)+' لاعبين</span></div></section>';
 }
-/* Gentle automatic slideshow: one player every 5.2 seconds, seamless forward wrap. */
-const CASTLE_STARS_AUTO_MS=5200;
+/* Smooth, uninterrupted RTL marquee (42 CSS pixels per second), starts immediately. */
+const CASTLE_STARS_SPEED=42;
 let castleStarsPauseUntil=0;
-function castleStarsPause(){castleStarsPauseUntil=Date.now()+12000;}
+let castleStarsPreviousFrame=0;
+function castleStarsPause(){castleStarsPauseUntil=Date.now()+3500;}
 function castleStarsSetupLoop(rail){
   if(!rail||rail.dataset.castleStarsLoop)return;
   const originals=Array.from(rail.querySelectorAll('.castle-star-card'));
@@ -45,6 +48,7 @@ function castleStarsSetupLoop(rail){
     copies++;
   }
   rail.dataset.castleStarsLoop=String(originals.length);
+  rail.classList.add('castle-stars-continuous');
 }
 function castleStarsAlignInstant(rail,card){
   const delta=card.getBoundingClientRect().right-rail.getBoundingClientRect().right;
@@ -75,20 +79,28 @@ function castleStarsMove(step){
   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   rail.scrollBy({left:delta,behavior:reduce?'instant':'smooth'});
 }
-function castleStarsAutoTick(){
-  const rail=document.getElementById('castle-stars-rail');if(!rail)return;
-  if(Date.now()<castleStarsPauseUntil||document.visibilityState==='hidden')return;
-  if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+function castleStarsAutoFrame(now){
+  window.requestAnimationFrame(castleStarsAutoFrame);
+  const dt=castleStarsPreviousFrame?Math.min(60,Math.max(0,now-castleStarsPreviousFrame)):0;
+  castleStarsPreviousFrame=now;
+  const rail=document.getElementById('castle-stars-rail');
+  if(!rail||!dt||castleStarsManuallyPaused||Date.now()<castleStarsPauseUntil)return;
+  if(document.visibilityState==='hidden'||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
   const area=rail.closest('.castle-stars');
   if(area&&window.matchMedia?.('(hover: hover)').matches&&area.matches(':hover'))return;
   if(area&&area.querySelector(':focus-visible'))return;
-  const rect=rail.getBoundingClientRect();
-  if(rect.bottom<0||rect.top>window.innerHeight)return;
   castleStarsSetupLoop(rail);
-  if(Number(rail.dataset.castleStarsLoop)<2)return;
-  if(rail.scrollWidth<=rail.clientWidth+8)return;
-  castleStarsMove(1);
+  const count=Number(rail.dataset.castleStarsLoop);
+  if(count<2||rail.scrollWidth<=rail.clientWidth+8)return;
+  const cards=rail.querySelectorAll('.castle-star-card');
+  if(!cards[count])return;
+  // The next cycle begins with an exact copy of the first card.
+  const cycle=Math.abs(cards[0].getBoundingClientRect().right-cards[count].getBoundingClientRect().right);
+  if(!Number.isFinite(cycle)||cycle<1)return;
+  const newPosition=rail.scrollLeft-CASTLE_STARS_SPEED*dt/1000;
+  rail.scrollLeft=(-newPosition>=cycle)?newPosition+cycle:newPosition;
 }
+window.requestAnimationFrame(castleStarsAutoFrame);
 let castleStarsPointer=null,castleStarsSuppressClickUntil=0;
 document.addEventListener('pointerdown',e=>{
   const rail=e.target.closest?.('.castle-stars-rail');
@@ -121,7 +133,7 @@ document.addEventListener('click',e=>{
 },true);
 document.addEventListener('click',e=>{
   const btn=e.target.closest?.('[data-castle-stars-step]');
-  if(btn){castleStarsMove(Number(btn.dataset.castleStarsStep));}
+  if(btn){castleStarsPause();castleStarsMove(Number(btn.dataset.castleStarsStep));}
 });
 document.addEventListener('keydown',e=>{
   if(!e.target.matches?.('#castle-stars-rail'))return;
@@ -143,4 +155,12 @@ document.addEventListener('focusin',e=>{
 document.addEventListener('keydown',e=>{
   if(e.target.closest?.('.castle-stars'))castleStarsPause();
 });
-window.setInterval(castleStarsAutoTick,CASTLE_STARS_AUTO_MS);
+document.addEventListener('click',e=>{
+  const toggle=e.target.closest?.('#castle-stars-toggle');if(!toggle)return;
+  castleStarsManuallyPaused=!castleStarsManuallyPaused;
+  toggle.textContent=castleStarsManuallyPaused?'▶':'Ⅱ';
+  toggle.setAttribute('aria-pressed',String(castleStarsManuallyPaused));
+  toggle.setAttribute('aria-label',castleStarsManuallyPaused?'تشغيل الحركة التلقائية':'إيقاف الحركة التلقائية');
+  toggle.title=castleStarsManuallyPaused?'تشغيل الحركة':'إيقاف الحركة';
+  if(!castleStarsManuallyPaused)castleStarsPauseUntil=0;
+});
