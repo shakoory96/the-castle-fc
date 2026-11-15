@@ -24,19 +24,70 @@ function castleStarsCarousel(){
     '<div id="castle-stars-rail" class="castle-stars-rail" tabindex="0" role="region" aria-roledescription="شريط أفقي" aria-label="بطاقات لاعبي القلعة، اسحب أفقياً لعرض المزيد">'+cards+'</div>'+
     '<div class="castle-stars-hint"><span>اسحب يمين ويسار لاستعراض نجوم القلعة</span><span>'+fmt(roster.length)+' لاعبين</span></div></section>';
 }
+/* Gentle automatic slideshow: one player every 5.2 seconds, seamless forward wrap. */
+const CASTLE_STARS_AUTO_MS=5200;
+let castleStarsPauseUntil=0;
+function castleStarsPause(){castleStarsPauseUntil=Date.now()+12000;}
+function castleStarsSetupLoop(rail){
+  if(!rail||rail.dataset.castleStarsLoop)return;
+  const originals=Array.from(rail.querySelectorAll('.castle-star-card'));
+  if(originals.length<2){rail.dataset.castleStarsLoop='0';return;}
+  const span=rail.scrollWidth,goal=span+rail.clientWidth+200;
+  let copies=0;
+  while(rail.scrollWidth<goal&&copies<12){
+    originals.forEach(card=>{
+      const copy=card.cloneNode(true);
+      copy.setAttribute('aria-hidden','true');
+      copy.tabIndex=-1;
+      copy.dataset.castleStarsDuplicate='1';
+      rail.appendChild(copy);
+    });
+    copies++;
+  }
+  rail.dataset.castleStarsLoop=String(originals.length);
+}
+function castleStarsAlignInstant(rail,card){
+  const delta=card.getBoundingClientRect().right-rail.getBoundingClientRect().right;
+  const originalSnap=rail.style.scrollSnapType;
+  rail.style.scrollSnapType='none';
+  rail.scrollLeft+=delta;
+  rail.style.scrollSnapType=originalSnap;
+}
 function castleStarsMove(step){
   const rail=document.getElementById('castle-stars-rail');if(!rail)return;
-  const cards=Array.from(rail.querySelectorAll('.castle-star-card'));if(!cards.length)return;
-  const railRight=rail.getBoundingClientRect().right;
+  castleStarsSetupLoop(rail);
+  const cards=Array.from(rail.querySelectorAll('.castle-star-card'));if(cards.length<2)return;
+  const originals=Number(rail.dataset.castleStarsLoop)||cards.length;
+  const right=rail.getBoundingClientRect().right;
   let nearest=0,best=Infinity;
   cards.forEach((card,i)=>{
-    const dist=Math.abs(card.getBoundingClientRect().right-railRight);
+    const dist=Math.abs(card.getBoundingClientRect().right-right);
     if(dist<best){nearest=i;best=dist;}
   });
-  const target=cards[(nearest+step+cards.length)%cards.length];
-  const delta=target.getBoundingClientRect().right-railRight;
+  if(nearest>=originals){
+    const firstCycle=nearest%originals;
+    castleStarsAlignInstant(rail,cards[firstCycle]);
+    nearest=firstCycle;
+  }
+  const nextIndex=step>0?nearest+1:(nearest===0?originals-1:nearest-1);
+  const target=cards[nextIndex];if(!target)return;
+  const delta=target.getBoundingClientRect().right-rail.getBoundingClientRect().right;
   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   rail.scrollBy({left:delta,behavior:reduce?'instant':'smooth'});
+}
+function castleStarsAutoTick(){
+  const rail=document.getElementById('castle-stars-rail');if(!rail)return;
+  if(Date.now()<castleStarsPauseUntil||document.visibilityState==='hidden')return;
+  if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+  const area=rail.closest('.castle-stars');
+  if(area&&window.matchMedia?.('(hover: hover)').matches&&area.matches(':hover'))return;
+  if(area&&area.contains(document.activeElement))return;
+  const rect=rail.getBoundingClientRect();
+  if(rect.bottom<0||rect.top>window.innerHeight)return;
+  castleStarsSetupLoop(rail);
+  if(Number(rail.dataset.castleStarsLoop)<2)return;
+  if(rail.scrollWidth<=rail.clientWidth+8)return;
+  castleStarsMove(1);
 }
 let castleStarsPointer=null,castleStarsSuppressClickUntil=0;
 document.addEventListener('pointerdown',e=>{
@@ -78,3 +129,18 @@ document.addEventListener('keydown',e=>{
     e.preventDefault();castleStarsMove(e.key==='ArrowLeft'?1:-1);
   }
 });
+
+/* Interaction always wins over automatic movement. */
+document.addEventListener('pointerdown',e=>{
+  if(e.target.closest?.('.castle-stars'))castleStarsPause();
+},{passive:true});
+document.addEventListener('wheel',e=>{
+  if(e.target.closest?.('.castle-stars'))castleStarsPause();
+},{passive:true});
+document.addEventListener('focusin',e=>{
+  if(e.target.closest?.('.castle-stars'))castleStarsPause();
+});
+document.addEventListener('keydown',e=>{
+  if(e.target.closest?.('.castle-stars'))castleStarsPause();
+});
+window.setInterval(castleStarsAutoTick,CASTLE_STARS_AUTO_MS);
