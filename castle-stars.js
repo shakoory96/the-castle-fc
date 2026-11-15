@@ -30,7 +30,7 @@ function castleStarsCarousel(){
     '<button class="castle-stars-arrow" type="button" data-castle-stars-step="-1" aria-label="اللاعب السابق" title="السابق">›</button>'+
     '<button class="castle-stars-arrow" type="button" data-castle-stars-step="1" aria-label="اللاعب التالي" title="التالي">‹</button>'+
     '</div></header>'+
-    '<div id="castle-stars-rail" class="castle-stars-rail" tabindex="0" role="region" aria-label="شريط أفقي لبطاقات لاعبي القلعة. اسحب يميناً ويساراً">'+
+    '<div id="castle-stars-rail" class="castle-stars-rail" dir="ltr" tabindex="0" role="region" aria-label="شريط أفقي لبطاقات لاعبي القلعة. اسحب يميناً ويساراً">'+
     '<div class="castle-stars-motion'+(castleStarsManuallyPaused?' is-paused':'')+'" style="--castle-stars-duration:'+duration+'s">'+groups+'</div></div>'+
     '<div class="castle-stars-hint"><span>اسحب يمين ويسار لاستعراض نجوم القلعة</span><span>'+fmt(roster.length)+' لاعبين</span></div></section>';
 }
@@ -41,15 +41,27 @@ function castleStarsPauseForInteraction(delay=2800){
   clearTimeout(castleStarsResumeTimer);
   castleStarsResumeTimer=setTimeout(()=>motion.isConnected&&motion.classList.remove('is-interacting'),delay);
 }
+/* Seek the CSS timeline instead of scrolling an already-animated element out of view. */
+function castleStarsSeek(pixels){
+  const rail=document.getElementById('castle-stars-rail');
+  const motion=rail?.querySelector('.castle-stars-motion');
+  const firstSet=motion?.querySelector('.castle-stars-set');
+  const animation=motion?.getAnimations?.().find(a=>a.playState!=='finished');
+  const cycle=firstSet?.getBoundingClientRect().width;
+  if(!animation||!cycle)return false;
+  const duration=(parseFloat(getComputedStyle(motion).animationDuration)||25)*1000;
+  const time=Number(animation.currentTime)||0;
+  animation.currentTime=((time+(pixels/cycle)*duration)%duration+duration)%duration;
+  return true;
+}
 function castleStarsMove(step){
   const rail=document.getElementById('castle-stars-rail');if(!rail)return;
-  const first=rail.querySelector('.castle-star-card');if(!first)return;
-  castleStarsPauseForInteraction(3000);
-  const set=rail.querySelector('.castle-stars-set');
-  if(step<0&&rail.scrollLeft>-4&&set)rail.scrollLeft=-(set.offsetWidth*2);
-  const px=first.getBoundingClientRect().width+13;
-  const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  rail.scrollBy({left:-Math.sign(step)*px,behavior:reduce?'instant':'smooth'});
+  const card=rail.querySelector('.castle-star-card');if(!card)return;
+  castleStarsPauseForInteraction(2600);
+  const px=card.getBoundingClientRect().width+13;
+  if(!castleStarsSeek(Math.sign(step)*px)){
+    rail.scrollBy({left:Math.sign(step)*px,behavior:'smooth'});
+  }
 }
 function castleStarsSetManualPaused(paused){
   castleStarsManuallyPaused=paused;
@@ -70,28 +82,26 @@ document.addEventListener('click',e=>{
   if(step)castleStarsMove(Number(step.dataset.castleStarsStep));
 });
 document.addEventListener('pointerdown',e=>{
-  const rail=e.target.closest?.('.castle-stars-rail');
-  if(!rail)return;
+  const rail=e.target.closest?.('.castle-stars-rail');if(!rail)return;
+  if(e.pointerType==='mouse'&&e.button!==0)return;
   castleStarsPauseForInteraction(5000);
-  if(e.pointerType==='mouse'&&e.button===0){
-    castleStarsMouseDrag={rail,x:e.clientX,scroll:rail.scrollLeft,moved:false};
-  }
+  castleStarsMouseDrag={rail,x:e.clientX,moved:false};
 });
 document.addEventListener('pointermove',e=>{
-  if(!castleStarsMouseDrag)return;
-  const d=castleStarsMouseDrag,dx=e.clientX-d.x;
-  if(Math.abs(dx)>7)d.moved=true;
+  const d=castleStarsMouseDrag;if(!d)return;
+  const dx=e.clientX-d.x;
+  if(Math.abs(dx)>5)d.moved=true;
   if(d.moved){
+    castleStarsSeek(-dx);
+    d.x=e.clientX;
     d.rail.classList.add('is-dragging');
-    d.rail.scrollLeft=d.scroll-dx;
-    e.preventDefault();
+    if(e.pointerType==='mouse')e.preventDefault();
   }
 });
 function castleStarsEndDrag(){
   if(!castleStarsMouseDrag)return;
-  const d=castleStarsMouseDrag;
-  if(d.moved)castleStarsSuppressClickUntil=Date.now()+300;
-  d.rail.classList.remove('is-dragging');
+  if(castleStarsMouseDrag.moved)castleStarsSuppressClickUntil=Date.now()+350;
+  castleStarsMouseDrag.rail.classList.remove('is-dragging');
   castleStarsMouseDrag=null;
 }
 document.addEventListener('pointerup',castleStarsEndDrag);
