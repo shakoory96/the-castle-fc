@@ -11,7 +11,11 @@
 .castle-stars-arrow:focus-visible,.castle-star-card:focus-visible,.castle-stars-rail:focus-visible{outline:3px solid #79c4ff;outline-offset:3px}
 .castle-stars-rail{display:flex;flex-wrap:nowrap;gap:13px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:2px;padding:4px 2px 13px;scrollbar-width:thin;scrollbar-color:#3478b4 transparent;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;cursor:grab;user-select:none}
 .castle-stars-rail.is-dragging{cursor:grabbing;scroll-snap-type:none}
-.castle-stars-rail.castle-stars-continuous{scroll-snap-type:none;scroll-behavior:auto}
+.castle-stars-rail{scroll-snap-type:none;scroll-behavior:auto;touch-action:pan-x}
+.castle-stars-motion{display:flex;flex:none;width:max-content;max-width:none;will-change:transform;animation:castleStarsFlow var(--castle-stars-duration,25s) linear infinite;animation-play-state:running}
+.castle-stars-motion.is-interacting,.castle-stars-motion.is-paused{animation-play-state:paused}
+.castle-stars-set{display:flex;gap:13px;flex:none;width:max-content;padding-inline-end:13px}
+@keyframes castleStarsFlow{from{transform:translate3d(0,0,0)}to{transform:translate3d(20%,0,0)}}
 .castle-stars-pause{font-size:17px;font-weight:900}
 .castle-stars-rail::-webkit-scrollbar{height:6px}
 .castle-stars-rail::-webkit-scrollbar-thumb{background:#286ba0;border-radius:12px}
@@ -27,4 +31,4 @@
 .castle-stars-hint{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px;color:#8caed2;font-size:11px}
 @media(max-width:760px){.castle-stars{margin:20px 0 24px;padding:16px 0}.castle-stars-rail{gap:10px;padding-bottom:10px}.castle-star-card{flex-basis:166px}.castle-star-photo{height:169px}.castle-star-name{font-size:14px}.castle-stars-arrow{width:38px;height:38px}}
 @media(max-width:480px){.castle-stars-header{align-items:flex-start;gap:8px}.castle-stars-heading h3{font-size:22px}.castle-stars-heading p{font-size:11px}.castle-stars-arrows{gap:5px;padding-top:9px}.castle-stars-arrow{width:34px;height:34px;font-size:23px}.castle-star-card{flex-basis:150px}.castle-star-photo{height:157px}.castle-stars-hint{font-size:10px}}
-@media(prefers-reduced-motion:reduce){.castle-stars-pause{display:none}.castle-star-card,.castle-stars-arrow{transition:none!important}.castle-stars-rail{scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){.castle-stars-motion{animation:none!important;will-change:auto}.castle-stars-pause{display:none}.castle-star-card,.castle-stars-arrow{transition:none!important}.castle-stars-rail{scroll-behavior:auto!important}}
