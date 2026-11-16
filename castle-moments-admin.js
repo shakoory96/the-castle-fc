@@ -73,7 +73,7 @@ async function castleMomentsUploadBatch(i,files){
   const a=state.draft.moments[i];
   if(!a)throw new Error('الألبوم المحدد غير موجود');
   if(!files.length)return;
-  if(a.photos.length+files.length>16)throw new Error('تجاوزت حد 16 صورة للألبوم. يمكنك حذف خانة فارغة ثم المحاولة.');
+  if(a.photos.filter(p=>p&&p.url).length+files.length>16)throw new Error('تجاوزت حد 16 صورة للألبوم.');
   const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};
   for(const f of files){
     if(!ext[f.type])throw new Error('اختر صور JPG/PNG/WebP فقط');
@@ -81,6 +81,7 @@ async function castleMomentsUploadBatch(i,files){
   }
   let completed=0;
   try{
+    a.photos=a.photos.filter(p=>p&&p.url);
     for(const file of files){
       const path='site/'+crypto.randomUUID()+'.'+ext[file.type];
       const r=await client.storage.from('castle-site-assets').upload(path,file,{contentType:file.type,upsert:false});
