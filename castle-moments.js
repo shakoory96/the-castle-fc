@@ -21,12 +21,15 @@ function castleMomentsCategoryName(a){
 function castleMomentsCard(a,kind,photo){
   const cover=photo||castleMomentsCover(a),url=cover&&safeUrl(cover.url);
   if(!url)return '';
-  return '<button type="button" class="castle-moment-card castle-moment-'+kind+'" data-moments-album="'+esc(a.id)+'" aria-label="عرض ألبوم '+esc(a.title)+'">'+
-    '<img src="'+url+'" alt="'+esc(cover.caption||a.title)+'" loading="lazy" decoding="async">'+
+  const thumb=kind==='small';
+  return '<button type="button" class="castle-moment-card castle-moment-'+kind+'" data-moments-album="'+esc(a.id)+'" aria-label="عرض ألبوم '+esc(a.title)+' — '+esc(cover.caption||'صورة')+'">'+
+    '<img class="castle-moment-backdrop" src="'+url+'" alt="" aria-hidden="true" loading="lazy" decoding="async">'+
+    '<img class="castle-moment-full" src="'+url+'" alt="'+esc(cover.caption||a.title)+'" loading="lazy" decoding="async">'+
     '<span class="castle-moment-shade" aria-hidden="true"></span>'+
+    (thumb?'<span class="castle-moment-thumb-icon" aria-hidden="true">↗</span>':
     '<span class="castle-moment-content"><span class="castle-moment-category">'+esc(castleMomentsCategoryName(a))+'</span>'+
-    '<strong>'+esc(photo?.caption||a.title)+'</strong><span class="castle-moment-meta">'+
-    (a.date?esc(dateFmt(a.date))+' · ':'')+fmt(castleMomentsPhotos(a).length)+' صورة</span></span></button>';
+    '<strong>'+esc(a.title)+'</strong><span class="castle-moment-meta">'+
+    (a.date?esc(dateFmt(a.date))+' · ':'')+fmt(castleMomentsPhotos(a).length)+' صورة</span></span>')+'</button>';
 }
 function castleMomentsHome(){
   if(settings().sections?.moments===false)return '';
@@ -43,9 +46,15 @@ function castleMomentsHome(){
     if(sides.length>=2)break;
     if(photo!==cover)sides.push({album:main,photo});
   }
+  // Never stretch one thumbnail into a second full-width card.
+  // If only two real photos exist, the other slot becomes a useful album link.
+  const filler=sides.length===1?
+    '<button type="button" class="castle-moment-all-tile" data-moments-album="'+esc(main.id)+'" aria-label="عرض جميع صور '+esc(main.title)+'">'+
+      '<span class="castle-moment-all-icon" aria-hidden="true">▣</span><strong>كل الصور</strong>'+
+      '<small>افتح الألبوم ←</small></button>':'';
   return '<section class="castle-moments-home" aria-label="لحظات القلعة">'+heading+
     '<div class="castle-moments-featured'+(sides.length?'':' is-solo')+'">'+castleMomentsCard(main,'main')+
-    (sides.length?'<div class="castle-moments-side">'+sides.map(x=>castleMomentsCard(x.album,'small',x.photo)).join('')+'</div>':'')+'</div></section>';
+    (sides.length?'<div class="castle-moments-side">'+sides.map(x=>castleMomentsCard(x.album,'small',x.photo)).join('')+filler+'</div>':'')+'</div></section>';
 }
 function castleMomentsPage(){
   const albums=castleMomentsAlbums(),categories=['الكل',...CASTLE_MOMENT_CATEGORIES];
