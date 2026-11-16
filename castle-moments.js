@@ -18,14 +18,14 @@ function castleMomentsCover(a){
 function castleMomentsCategoryName(a){
   return CASTLE_MOMENT_CATEGORIES.includes(a?.category)?a.category:'لحظات الفريق';
 }
-function castleMomentsCard(a,kind){
-  const cover=castleMomentsCover(a),url=cover&&safeUrl(cover.url);
+function castleMomentsCard(a,kind,photo){
+  const cover=photo||castleMomentsCover(a),url=cover&&safeUrl(cover.url);
   if(!url)return '';
   return '<button type="button" class="castle-moment-card castle-moment-'+kind+'" data-moments-album="'+esc(a.id)+'" aria-label="عرض ألبوم '+esc(a.title)+'">'+
     '<img src="'+url+'" alt="'+esc(cover.caption||a.title)+'" loading="lazy" decoding="async">'+
     '<span class="castle-moment-shade" aria-hidden="true"></span>'+
     '<span class="castle-moment-content"><span class="castle-moment-category">'+esc(castleMomentsCategoryName(a))+'</span>'+
-    '<strong>'+esc(a.title)+'</strong><span class="castle-moment-meta">'+
+    '<strong>'+esc(photo?.caption||a.title)+'</strong><span class="castle-moment-meta">'+
     (a.date?esc(dateFmt(a.date))+' · ':'')+fmt(castleMomentsPhotos(a).length)+' صورة</span></span></button>';
 }
 function castleMomentsHome(){
@@ -37,10 +37,15 @@ function castleMomentsHome(){
   if(!albums.length)return '<section class="castle-moments-home" aria-label="لحظات القلعة">'+heading+
     '<div class="castle-moments-empty"><span class="castle-moments-empty-icon" aria-hidden="true">▣</span>'+
     '<div><strong>لحظات القلعة قيد التوثيق</strong><p>من ننشر أول صور الفريق، راح تظهر هنا كألبومات للمباريات والتدريبات والاحتفالات.</p></div></div></section>';
-  const shown=albums.slice(0,3);
+  const main=albums[0],sides=albums.slice(1,3).map(a=>({album:a,photo:null}));
+  const cover=castleMomentsCover(main);
+  for(const photo of castleMomentsPhotos(main)){
+    if(sides.length>=2)break;
+    if(photo!==cover)sides.push({album:main,photo});
+  }
   return '<section class="castle-moments-home" aria-label="لحظات القلعة">'+heading+
-    '<div class="castle-moments-featured">'+castleMomentsCard(shown[0],'main')+
-    (shown.length>1?'<div class="castle-moments-side">'+shown.slice(1).map(a=>castleMomentsCard(a,'small')).join('')+'</div>':'')+'</div></section>';
+    '<div class="castle-moments-featured'+(sides.length?'':' is-solo')+'">'+castleMomentsCard(main,'main')+
+    (sides.length?'<div class="castle-moments-side">'+sides.map(x=>castleMomentsCard(x.album,'small',x.photo)).join('')+'</div>':'')+'</div></section>';
 }
 function castleMomentsPage(){
   const albums=castleMomentsAlbums(),categories=['الكل',...CASTLE_MOMENT_CATEGORIES];
