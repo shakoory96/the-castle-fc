@@ -18,7 +18,7 @@ function castleMomentsEditor(){
       '<label class="cms-field"><span>تاريخ اللحظة (اختياري)</span><input type="date" data-cms-path="moments.'+i+'.date" value="'+esc(album.date||'')+'"></label>'+
       cmsField('نشر الألبوم','moments.'+i+'.visible',album.visible!==false,{type:'checkbox'})+'</div>'+
       '<div class="castle-moments-photo-admin-header"><strong>صور الألبوم ('+ps.length+')</strong>'+
-      '<button type="button" class="btn sm" data-moments-add-photo="'+i+'" '+(ps.length>=16?'disabled':'')+'>+ إضافة صورة</button></div>'+
+      '<label class="btn sm castle-moments-batch">رفع عدة صور<input type="file" data-moments-batch="'+i+'" accept="image/jpeg,image/png,image/webp" multiple hidden></label>'+'<button type="button" class="btn sm" data-moments-add-photo="'+i+'" '+(ps.length>=16?'disabled':'')+'>+ إضافة صورة منفردة</button></div>'+
       '<div class="castle-moments-photo-admin-grid">'+ps.map((p,j)=>
        '<div class="castle-moments-photo-admin">'+
        '<div class="castle-moments-photo-admin-buttons">'+
@@ -66,4 +66,37 @@ document.addEventListener('click',e=>{
     const a=state.draft.moments[Number(cover.dataset.momentsSetCover)],j=Number(cover.dataset.photoIndex);
     if(a&&a.photos[j]){a.coverIndex=j;rerenderCms();notify('تم اختيار صورة الغلاف في المسودة');}
   }
+});
+
+async function castleMomentsUploadBatch(i,files){
+  if(!state.admin||!state.draft)throw new Error('رفع الصور متاح للإدارة فقط');
+  const a=state.draft.moments[i];
+  if(!a)throw new Error('الألبوم المحدد غير موجود');
+  if(!files.length)return;
+  if(a.photos.length+files.length>16)throw new Error('تجاوزت حد 16 صورة للألبوم. يمكنك حذف خانة فارغة ثم المحاولة.');
+  const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};
+  for(const f of files){
+    if(!ext[f.type])throw new Error('اختر صور JPG/PNG/WebP فقط');
+    if(f.size>3*1024*1024)throw new Error('حجم '+f.name+' أكبر من 3MB');
+  }
+  let completed=0;
+  try{
+    for(const file of files){
+      const path='site/'+crypto.randomUUID()+'.'+ext[file.type];
+      const r=await client.storage.from('castle-site-assets').upload(path,file,{contentType:file.type,upsert:false});
+      if(r.error)throw r.error;
+      const url=client.storage.from('castle-site-assets').getPublicUrl(path).data.publicUrl;
+      a.photos.push({url,caption:''});
+      completed++;
+    }
+    notify('تم رفع '+fmt(completed)+' صور إلى المسودة. اضغط «نشر التغييرات» حتى تظهر للزوار.');
+  }finally{
+    rerenderCms();
+  }
+}
+document.addEventListener('change',e=>{
+  const input=e.target.closest?.('[data-moments-batch]');
+  if(!input||!state.admin)return;
+  const files=Array.from(input.files||[]),i=Number(input.dataset.momentsBatch);
+  if(files.length)guardedRun(input,()=>castleMomentsUploadBatch(i,files));
 });
