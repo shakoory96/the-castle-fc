@@ -111,3 +111,6 @@
  .castle-moments-editor-album .cms-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.castle-moment-card img{transition:none}}
+
+.castle-moments-batch{cursor:pointer}.castle-moments-side:has(> :only-child){grid-template-rows:1fr}.castle-moments-side:has(> :only-child) .castle-moment-card{height:100%}
+@media(max-width:660px){.castle-moments-side:has(> :only-child){grid-template-columns:1fr}}
