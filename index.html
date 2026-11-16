@@ -57,8 +57,8 @@
 .cms-adaptive:not(:has(> :nth-child(2))){grid-template-columns:1fr}
 @media(max-width:860px){.cms-grid{grid-template-columns:1fr}.cms-navfields{grid-template-columns:1fr 1fr}.cms-navfields .cms-check{grid-column:1/-1}.cms-editor{padding:15px}.cms-tabs .btn{flex:1}}
 @media(max-width:480px){.cms-navfields{grid-template-columns:1fr}.cms-actions .btn{width:100%}.cms-card-grid{grid-template-columns:1fr}}
-</style><link rel="stylesheet" href="castle-phase1.css"><link rel="stylesheet" href="castle-stars.css?v=20261115-manual-only"><link rel="stylesheet" href="castle-mobile.css"><link rel="stylesheet" href="castle-players-premium.css"></head>
-<body><div class="app"><aside class="sidebar"><div class="brand"><img src="official_castle_logo.jpg" alt="الشعار الرسمي لفريق القلعة"><div><h1>القلعة</h1><small>THE CASTLE FC</small></div></div><div class="menu-label">عالم القلعة</div><nav class="side-nav" id="desktop-nav"></nav><div class="side-foot"><div class="big"><span class="status"></span> البيانات الحقيقية</div><p>يتم عرض بيانات اللاعبين والمباريات المحفوظة في قاعدة بيانات النادي.</p></div></aside><div class="main-wrap"><header class="topbar"><div class="trail"><span class="mobile-only" style="font-size:20px;color:#63b3ff">♜</span><span>THE CASTLE</span><span>‹</span><b id="bread">الرئيسية</b></div><div class="top-actions"><span class="beta">● LIVE DATA</span><button class="btn sm ghost" data-view="admin">⚙ <span class="hide-small">الإدارة</span></button></div></header><main class="content"><div id="status-notice" class="notice" role="status"></div><div id="screen" aria-live="polite"></div><footer>© THE CASTLE FC • منصة القلعة الرياضية • <a href="https://www.facebook.com/profile.php?id=61594539968482" rel="noopener noreferrer" target="_blank">صفحتنا الرسمية على فيسبوك</a></footer></main></div></div><nav class="mobile-bottom" id="mobile-nav"></nav><div id="drawer"></div><div id="overlay"></div><div class="toast" id="toast" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="castle-phase1.js"></script><script src="castle-stars.js?v=20261115-premium-card1"></script><script src="castle-mobile.js"></script><script src="castle-players-premium.js"></script><script>'use strict';
+</style><link rel="stylesheet" href="castle-phase1.css"><link rel="stylesheet" href="castle-stars.css?v=20261115-manual-only"><link rel="stylesheet" href="castle-mobile.css"><link rel="stylesheet" href="castle-players-premium.css"><link rel="stylesheet" href="castle-moments.css"></head>
+<body><div class="app"><aside class="sidebar"><div class="brand"><img src="official_castle_logo.jpg" alt="الشعار الرسمي لفريق القلعة"><div><h1>القلعة</h1><small>THE CASTLE FC</small></div></div><div class="menu-label">عالم القلعة</div><nav class="side-nav" id="desktop-nav"></nav><div class="side-foot"><div class="big"><span class="status"></span> البيانات الحقيقية</div><p>يتم عرض بيانات اللاعبين والمباريات المحفوظة في قاعدة بيانات النادي.</p></div></aside><div class="main-wrap"><header class="topbar"><div class="trail"><span class="mobile-only" style="font-size:20px;color:#63b3ff">♜</span><span>THE CASTLE</span><span>‹</span><b id="bread">الرئيسية</b></div><div class="top-actions"><span class="beta">● LIVE DATA</span><button class="btn sm ghost" data-view="admin">⚙ <span class="hide-small">الإدارة</span></button></div></header><main class="content"><div id="status-notice" class="notice" role="status"></div><div id="screen" aria-live="polite"></div><footer>© THE CASTLE FC • منصة القلعة الرياضية • <a href="https://www.facebook.com/profile.php?id=61594539968482" rel="noopener noreferrer" target="_blank">صفحتنا الرسمية على فيسبوك</a></footer></main></div></div><nav class="mobile-bottom" id="mobile-nav"></nav><div id="drawer"></div><div id="overlay"></div><div class="toast" id="toast" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="castle-phase1.js"></script><script src="castle-stars.js?v=20261115-premium-card1"></script><script src="castle-mobile.js"></script><script src="castle-players-premium.js"></script><script src="castle-moments.js"></script><script src="castle-moments-admin.js"></script><script>'use strict';
 const SUPABASE_URL='https://sfjqaeqabzhnikifpqki.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_lFw3vmM2_NXy8_HCC07EQQ_hK0fQmwo';
 const LOGO='official_castle_logo.jpg';
@@ -79,15 +79,13 @@ function title(s,sub='',action=''){return `<div class="heading"><div><h2>${s}</h
 function empty(s){return `<div class="empty-state">${esc(s)}</div>`}
 function navHtml(mobile=false){const links=(mobile?NAV.slice(0,4):NAV).map(([id,icon,name])=>mobile?`<button class="${state.view===id?'active':''}" data-view="${esc(id)}"><span class="mi">${iconLink(icon)}</span><small>${esc(name)}</small></button>`:`<button class="nav-link ${state.view===id?'active':''}" data-view="${esc(id)}"><span class="nav-icon">${iconLink(icon)}</span>${esc(name)}</button>`).join('');return mobile?links+'<button data-show-menu="1"><span class="mi">☰</span><small>المزيد</small></button>':links;}
 function home(){
-  const st=stats(),up=matchesSorted().filter(m=>m.status==='scheduled'&&m.match_date>=(new Date().toLocaleDateString('en-CA'))).sort((a,b)=>a.match_date.localeCompare(b.match_date))[0],past=matchesSorted().filter(m=>m.status==='completed').slice(0,3),c=settings(),sections=c.sections;
+  const st=stats(),past=matchesSorted().filter(m=>m.status==='completed').slice(0,3),c=settings(),sections=c.sections;
   const banner=safeUrl(c.branding.bannerUrl);
   return `${sections.hero?`<section class="hero">${banner?`<img class="cms-hero-back" src="${banner}" alt="" aria-hidden="true">`:''}<div class="hero-copy"><div class="pill">${t('heroTag')}</div><h2>${t('heroStart')}<em>${t('heroHighlight')}</em><br>${t('heroEnd')}</h2><p>${t('heroDescription')}</p><div class="hero-actions"><button class="btn primary" data-view="players">${t('heroPrimary')} ←</button><button class="btn ghost" data-view="matches">⚽ ${t('heroSecondary')}</button></div></div><div class="hero-art"><div class="hero-ring"></div><img src="${siteLogo()}" alt="شعار القلعة"><div class="hero-caption">${t('heroCaption')}</div></div></section>`:''}
   ${sections.castleStars?castleStarsCarousel():''}
-  ${castleMobileMatchCard()}
-  ${castleMatchdaySpotlight()}
   ${sections.summary?`<div class="kpis"><div class="kpi"><div><div class="lbl">${t('kpiPlayers')}</div><div class="num">${fmt(state.players.filter(p=>p.is_active!==false).length)}</div></div><span class="ico">♟</span></div><div class="kpi"><div><div class="lbl">${t('kpiMatches')}</div><div class="num">${fmt(st.played)}</div></div><span class="ico">⚽</span></div><div class="kpi"><div><div class="lbl">${t('kpiWins')}</div><div class="num">${fmt(st.wins)}</div></div><span class="ico">🏆</span></div><div class="kpi"><div><div class="lbl">${t('kpiGoals')}</div><div class="num">${fmt(st.goals)}</div></div><span class="ico">◎</span></div></div>`:''}
-  ${sections.nextMatch?`<div class="panel home-next-panel" style="margin-top:20px"><div class="panel-head"><h3>${t('homeNext')}</h3><button class="sub-link" data-view="matches">${t('heroSecondary')} ←</button></div>${up?fixture(up):empty('ماكو مباراة قادمة مسجلة حالياً.')}</div>`:''}
   ${sections.recentResults?`<div class="panel" style="margin-top:20px"><div class="panel-head"><h3>${t('homeResults')}</h3><button class="sub-link" data-view="matches">كل النتائج ←</button></div>${past.length?`<div class="card-list">${past.map(fixture).join('')}</div>`:empty('بعد ما مسجلين مباريات مكتملة.')}</div>`:''}
+  ${castleMomentsHome()}
   ${homeExtraCards()}`;
 }
 function fixture(m){let completed=m.status==='completed',score=completed?`${fmt(m.our_score)} - ${fmt(m.opponent_score)}`:m.status==='cancelled'?'ملغاة':'VS';let cls=completed?(m.our_score>m.opponent_score?'win':m.our_score<m.opponent_score?'loss':''):' ';return `<button class="fixture" data-match="${esc(m.id)}" style="width:100%;text-align:right;color:inherit;cursor:pointer"><div><div class="comp">${esc(m.competition||'مباراة')} · ${dateFmt(m.match_date)}</div><div class="op">القلعة</div></div><div class="mid ${cls}">${score}</div><div><div class="comp">${m.venue?esc(m.venue):'منافسة رياضية'}</div><div class="op">${esc(m.opponent_name)}</div></div></button>`}
@@ -115,7 +113,7 @@ function showPlayer(id){let p=state.players.find(x=>x.id===id);if(!p)return;moda
 function showMatch(id){let m=state.matches.find(x=>x.id===id);if(!m)return;modal(`<div class="eyebrow">CASTLE MATCH CENTER</div><h2>${esc(m.opponent_name)}</h2>${fixture(m)}<div class="pair"><span>التاريخ</span><b>${dateFmt(m.match_date)}</b></div><div class="pair"><span>الوقت</span><b>${esc(m.kickoff_time?.slice(0,5)||'غير محدد')}</b></div><div class="pair"><span>البطولة</span><b>${esc(m.competition||'—')}</b></div><div class="pair"><span>الملعب</span><b>${esc(m.venue||'—')}</b></div>${m.notes?`<div class="pair"><span>ملاحظات</span><b>${esc(m.notes)}</b></div>`:''}`)}
 function modal(html,type=''){const player=type==='player';document.getElementById('overlay').innerHTML=`<div class="modal-overlay${player?' player-modal-overlay':''}" data-close="1"><div class="modal${player?' castle-player-sheet':''}" role="dialog" aria-modal="true"${player?' aria-label="ملف لاعب القلعة"':''}><button class="close" data-close="1" aria-label="إغلاق">×</button>${html}</div></div>`}
 function closeModal(){document.getElementById('overlay').innerHTML=''}
-function render(){syncAppearance();NAV.splice(0,NAV.length,...navItems().map(n=>[n.id,n.icon,n.label]));document.getElementById('desktop-nav').innerHTML=navHtml();document.getElementById('mobile-nav').innerHTML=navHtml(true);document.getElementById('bread').textContent=NAV.find(n=>n[0]===state.view)?.[2]||(state.view==='admin'?'الإدارة':'الرئيسية');let banner=document.getElementById('status-notice');banner.className='notice '+(state.error?'error':'success');banner.style.display=(state.admin||state.previewMode||state.error)?'':'none';banner.innerHTML=`<span>✦</span><span class="notice-txt">${state.previewMode?'معاينة شخصية غير منشورة: اضغط «العودة للتحرير» حتى ترجع للإعدادات.':state.error?`تعذّر الاتصال بقاعدة البيانات: ${esc(state.error)}. لم نعرض أي بيانات تجريبية.`:state.loading?'جاري جلب بيانات القلعة الحقيقية...':'بيانات الموقع مرتبطة بقاعدة Supabase. لا يوجد محتوى تجريبي.'}</span>${state.previewMode?'<button class="btn sm" id="cms-back-edit">العودة للتحرير</button>':!state.loading?'<button class="btn sm" id="refresh-btn">↻ تحديث</button>':''}`;let pages={home,players,matches,matchday,fans,honors,admin};document.getElementById('screen').classList.toggle('home-screen',state.view==='home');document.getElementById('screen').innerHTML=state.loading?empty('جاري تحميل البيانات...'):(pages[state.view]||customPage)();let b=document.querySelector('.beta');b.textContent=state.error?'● OFFLINE':state.previewMode?'◉ معاينة خاصة':'● LIVE DATA';b.classList.toggle('live-status',!state.error);}
+function render(){syncAppearance();NAV.splice(0,NAV.length,...navItems().map(n=>[n.id,n.icon,n.label]));document.getElementById('desktop-nav').innerHTML=navHtml();document.getElementById('mobile-nav').innerHTML=navHtml(true);document.getElementById('bread').textContent=NAV.find(n=>n[0]===state.view)?.[2]||(state.view==='admin'?'الإدارة':'الرئيسية');let banner=document.getElementById('status-notice');banner.className='notice '+(state.error?'error':'success');banner.style.display=(state.admin||state.previewMode||state.error)?'':'none';banner.innerHTML=`<span>✦</span><span class="notice-txt">${state.previewMode?'معاينة شخصية غير منشورة: اضغط «العودة للتحرير» حتى ترجع للإعدادات.':state.error?`تعذّر الاتصال بقاعدة البيانات: ${esc(state.error)}. لم نعرض أي بيانات تجريبية.`:state.loading?'جاري جلب بيانات القلعة الحقيقية...':'بيانات الموقع مرتبطة بقاعدة Supabase. لا يوجد محتوى تجريبي.'}</span>${state.previewMode?'<button class="btn sm" id="cms-back-edit">العودة للتحرير</button>':!state.loading?'<button class="btn sm" id="refresh-btn">↻ تحديث</button>':''}`;let pages={home,players,matches,matchday,moments:castleMomentsPage,fans,honors,admin};document.getElementById('screen').classList.toggle('home-screen',state.view==='home');document.getElementById('screen').innerHTML=state.loading?empty('جاري تحميل البيانات...'):(pages[state.view]||customPage)();let b=document.querySelector('.beta');b.textContent=state.error?'● OFFLINE':state.previewMode?'◉ معاينة خاصة':'● LIVE DATA';b.classList.toggle('live-status',!state.error);}
 function go(view){state.view=view;closeModal();render();window.scrollTo({top:0,behavior:'smooth'})}
 function mapErr(err){if(!err)return 'خطأ غير معروف';return /invalid login credentials/i.test(err.message||'')?'بيانات تسجيل الدخول غير صحيحة.':(err.message||String(err))}
 async function refresh(){if(!client){state.error='تعذر تحميل مكتبة الاتصال. تحقق من الإنترنت.';state.loading=false;render();return}state.loading=true;state.error='';render();try{const authRes=await client.auth.getUser();state.user=authRes.data?.user||null;state.admin=false;if(state.user){const r=await client.rpc('castle_admin_status');if(r.error)throw new Error('تعذر التأكد من صلاحيات المدير: '+mapErr(r.error));state.admin=r.data===true}const [pr,mr,sr]=await Promise.all([client.from('players').select('*').order('created_at',{ascending:false}),client.from('matches').select('*').order('match_date',{ascending:false}),client.from('site_settings').select('config,version').eq('id',1).single()]);if(pr.error)throw pr.error;if(mr.error)throw mr.error;if(sr.error)throw new Error('إعدادات الموقع: '+mapErr(sr.error));state.players=pr.data||[];state.matches=mr.data||[];state.config=normalizeSite(sr.data.config);state.configVersion=sr.data.version;if(!state.draft)state.draft=cloneObj(state.config);}catch(e){state.error=mapErr(e);state.players=[];state.matches=[];}finally{state.loading=false;render();castleMaybeOpenShareLink()}}
@@ -159,6 +157,7 @@ const DEFAULT_SITE = {
     heroDescription:'بيت القلعة الرقمي: اللاعبون، المباريات، الإنجازات... تاريخنا نكتبه مباراة بعد مباراة.',
     heroPrimary:'اكتشف نجوم القلعة',heroSecondary:'مركز المباريات',heroCaption:'THE CASTLE • EST. WITH PRIDE',
     homeNext:'⚡ المباراة القادمة',homeResults:'⚽ آخر النتائج',
+    momentsTitle:'لحظات القلعة',momentsSubtitle:'كل لحظة إلها حكاية… وكل صورة إلها ذكرى',
     kpiPlayers:'اللاعبون',kpiMatches:'المباريات المكتملة',kpiWins:'الانتصارات',kpiGoals:'الأهداف المسجلة',
     starsTitle:'نجوم القلعة',starsSubtitle:'اسحب لتكتشف لاعبي القلعة، واضغط على أي لاعب لعرض ملفه.',
     playersTitle:'نجوم القلعة',playersSubtitle:'ملفات اللاعبين الحقيقيين المسجلين بقاعدة بيانات النادي.',
@@ -171,7 +170,7 @@ const DEFAULT_SITE = {
     honorsDescription:'راح يظهر هنا سجل البطولات والجوائز بعد إدخال إنجازات الفريق الحقيقية. ما نعرض إنجازات افتراضية.'
   },
   captainId:'',
-  sections:{hero:true,castleStars:true,summary:true,nextMatch:true,recentResults:true,homeCards:true},
+  sections:{hero:true,castleStars:true,summary:true,recentResults:true,moments:true,homeCards:true},
   navigation:[
     {id:'home',icon:'⌂',label:'الرئيسية',visible:true},
     {id:'players',icon:'♟',label:'اللاعبون',visible:true},
@@ -179,9 +178,10 @@ const DEFAULT_SITE = {
     {id:'matchday',icon:'⚡',label:'ليلة القلعة',visible:true},
     {id:'fans',icon:'♡',label:'الجمهور',visible:true},
     {id:'honors',icon:'♜',label:'سجل المجد',visible:true},
+    {id:'moments',icon:'▣',label:'لحظات القلعة',visible:true},
     {id:'admin',icon:'⚙',label:'الإدارة',visible:true}
   ],
-  homeCards:[], customPages:[]
+  homeCards:[], customPages:[], moments:[]
 };
 const EDIT_TEXT_FIELDS = [
   ['heroTag','الجملة الصغيرة فوق عنوان الرئيسية'],['heroStart','بداية العنوان'],['heroHighlight','الكلمة الزرقاء في العنوان'],
@@ -189,6 +189,7 @@ const EDIT_TEXT_FIELDS = [
   ['heroSecondary','زر المباريات'],['heroCaption','النص الإنجليزي أسفل الشعار'],
   ['kpiPlayers','عنوان إحصائية اللاعبين'],['kpiMatches','عنوان إحصائية المباريات'],['kpiWins','عنوان إحصائية الانتصارات'],['kpiGoals','عنوان إحصائية الأهداف'],
   ['homeNext','عنوان مربع المباراة القادمة'],['homeResults','عنوان مربع النتائج'],
+  ['momentsTitle','عنوان لحظات القلعة'],['momentsSubtitle','وصف لحظات القلعة'],
   ['starsTitle','عنوان شريط نجوم القلعة'],['starsSubtitle','وصف الشريط الأفقي للاعبين'],
   ['playersTitle','عنوان صفحة اللاعبين'],['playersSubtitle','وصف صفحة اللاعبين'],
   ['matchesTitle','عنوان صفحة المباريات'],['matchesSubtitle','وصف صفحة المباريات'],
@@ -199,8 +200,7 @@ const EDIT_TEXT_FIELDS = [
 ];
 const EDIT_SECTIONS = [
   ['hero','الواجهة الكبيرة والشعار'],['castleStars','شريط نجوم القلعة الأفقي'],['summary','أرقام الفريق الإجمالية'],
-  ['nextMatch','مربع المباراة القادمة'],
-  ['recentResults','مربع النتائج الأخيرة'],['homeCards','البطاقات التعريفية الإضافية']
+  ['recentResults','مربع النتائج الأخيرة'],['moments','لحظات القلعة ومعرض الصور'],['homeCards','البطاقات التعريفية الإضافية']
 ];
 function cloneObj(value){return JSON.parse(JSON.stringify(value))}
 function normalizeSite(data){
@@ -210,9 +210,10 @@ function normalizeSite(data){
     theme:{...DEFAULT_SITE.theme,...(c.theme||{})},
     texts:{...DEFAULT_SITE.texts,...(c.texts||{})},
     sections:{...DEFAULT_SITE.sections,...(c.sections||{})},
-    navigation:(function(){let nav=(Array.isArray(c.navigation)&&c.navigation.length?cloneObj(c.navigation):cloneObj(DEFAULT_SITE.navigation)).filter(n=>n&&n.id!=='ranking');if(!nav.some(n=>n.id==='matchday')){let i=nav.findIndex(n=>n.id==='matches');nav.splice(i>=0?i+1:nav.length,0,{id:'matchday',icon:'⚡',label:'ليلة القلعة',visible:true})}return nav})(),
+    navigation:(function(){let nav=(Array.isArray(c.navigation)&&c.navigation.length?cloneObj(c.navigation):cloneObj(DEFAULT_SITE.navigation)).filter(n=>n&&n.id!=='ranking');if(!nav.some(n=>n.id==='matchday')){let i=nav.findIndex(n=>n.id==='matches');nav.splice(i>=0?i+1:nav.length,0,{id:'matchday',icon:'⚡',label:'ليلة القلعة',visible:true})}if(!nav.some(n=>n.id==='moments')){let i=nav.findIndex(n=>n.id==='honors');nav.splice(i>=0?i+1:nav.length,0,{id:'moments',icon:'▣',label:'لحظات القلعة',visible:true})}return nav})(),
     homeCards:Array.isArray(c.homeCards)?c.homeCards:[],
     customPages:Array.isArray(c.customPages)?c.customPages:[],
+    moments:Array.isArray(c.moments)?c.moments.filter(a=>a&&typeof a==='object'&&!Array.isArray(a)).slice(0,18).map(a=>({...a,photos:Array.isArray(a.photos)?a.photos.filter(p=>p&&typeof p==='object').slice(0,16):[]})):[],
     captainId:typeof c.captainId==='string'?c.captainId:'',
     lineups:c.lineups&&typeof c.lineups==='object'&&!Array.isArray(c.lineups)?c.lineups:{}
   };
@@ -222,7 +223,7 @@ function t(key){return esc(settings().texts[key]??DEFAULT_SITE.texts[key]??'')}
 function siteLogo(){return safeUrl(settings().branding.logoUrl)||LOGO}
 function allowedHex(value,fallback){return /^#[0-9a-fA-F]{6}$/.test(String(value))?value:fallback}
 function navItems(){return settings().navigation.filter(n=>n&&typeof n.id==='string'&&n.visible!==false&&
-  (['home','players','matches','matchday','fans','honors','admin'].includes(n.id)||
+  (['home','players','matches','matchday','moments','fans','honors','admin'].includes(n.id)||
    settings().customPages.some(p=>p.id===n.id&&p.visible!==false)));
 }
 function syncAppearance(){
@@ -261,7 +262,7 @@ function cmsField(label,path,value,opts={}){
 function cmsUpload(label,target,preview){return `<div class="cms-field"><span>${esc(label)} — JPG/PNG/WebP حتى 3MB</span><input type="file" accept="image/jpeg,image/png,image/webp" data-cms-upload="${esc(target)}">${safeUrl(preview)?`<img class="cms-image-thumb" src="${safeUrl(preview)}" alt="معاينة الصورة">`:''}</div>`}
 function cmsEditor(){if(!state.draft)state.draft=cloneObj(state.config||DEFAULT_SITE);
   const d=state.draft;
-  const tabs=[['texts','النصوص'],['nav','التبويبات'],['sections','الأقسام'],['theme','الهوية'],['cards','بطاقات الرئيسية'],['pages','صفحات جديدة']];
+  const tabs=[['texts','النصوص'],['nav','التبويبات'],['sections','الأقسام'],['moments','لحظات القلعة'],['theme','الهوية'],['cards','بطاقات الرئيسية'],['pages','صفحات جديدة']];
   let editor='';
   if(state.editorTab==='texts'){
     editor=`<div class="cms-grid">${EDIT_TEXT_FIELDS.map(([k,v])=>cmsField(v,'texts.'+k,d.texts[k],{type:/Description|Subtitle/i.test(k)?'textarea':'text',max:1200})).join('')}</div>`;
@@ -270,6 +271,8 @@ function cmsEditor(){if(!state.draft)state.draft=cloneObj(state.config||DEFAULT_
       <div class="cms-stack">${d.navigation.map((n,i)=>`<div class="cms-item" data-cms-index="${i}"><div class="cms-item-bar"><strong>${esc(n.id)}</strong><div class="cms-inline"><button class="btn sm" data-cms-navmove="up" data-index="${i}" ${i===0?'disabled':''}>↑</button><button class="btn sm" data-cms-navmove="down" data-index="${i}" ${i===d.navigation.length-1?'disabled':''}>↓</button></div></div><div class="cms-navfields">${cmsField('اسم التبويب',`navigation.${i}.label`,n.label,{max:50})}${cmsField('الرمز أو الإيموجي',`navigation.${i}.icon`,n.icon,{max:6})}${cmsField('ظاهر للزوار',`navigation.${i}.visible`,n.visible!==false,{type:'checkbox'})}</div></div>`).join('')}</div>`;
   } else if(state.editorTab==='sections'){
     editor=`<div class="cms-grid">${EDIT_SECTIONS.map(([k,v])=>cmsField(v,'sections.'+k,d.sections[k]!==false,{type:'checkbox'})).join('')}</div>`;
+  } else if(state.editorTab==='moments'){
+    editor=castleMomentsEditor();
   } else if(state.editorTab==='theme'){
     editor=`<div class="cms-grid">${cmsField('اسم الفريق بالعربية','branding.arabic',d.branding.arabic,{max:75})}${cmsField('الاسم بالإنجليزية','branding.english',d.branding.english,{max:75})}${cmsField('اسم مجموعة القائمة','branding.menuTitle',d.branding.menuTitle,{max:75})}${cmsField('عبارة تذييل الموقع','branding.footer',d.branding.footer,{max:200})}${cmsField('وصف جانب القائمة','branding.sidebarDescription',d.branding.sidebarDescription,{type:'textarea'})}${cmsField('عنوان صندوق جانب القائمة','branding.sidebarTitle',d.branding.sidebarTitle,{max:100})}${cmsField('رابط فيسبوك','branding.facebook',d.branding.facebook,{max:300})}${cmsField('الأزرق الرئيسي','theme.accent',d.theme.accent,{type:'color'})}${cmsField('الأزرق الفاتح','theme.accentLight',d.theme.accentLight,{type:'color'})}${cmsField('الخلفية','theme.background',d.theme.background,{type:'color'})}${cmsField('لون القائمة الجانبية','theme.sidebar',d.theme.sidebar,{type:'color'})}${cmsField('لون البطاقات','theme.panel',d.theme.panel,{type:'color'})}</div><div class="cms-grid">${cmsUpload('صورة خلفية الواجهة (اختياري)','branding.bannerUrl',d.branding.bannerUrl)}${cmsUpload('استبدال الشعار (اختياري — يظل الأصلي افتراضياً)','branding.logoUrl',d.branding.logoUrl)}</div><p class="muted">يمكنك إزالة صورة الخلفية أو العودة إلى الشعار الأصلي باستخدام زري الإزالة أدناه.</p><div class="cms-inline"><button class="btn sm" data-cms-clear="branding.bannerUrl">حذف صورة الخلفية</button><button class="btn sm" data-cms-clear="branding.logoUrl">العودة للشعار الأصلي</button></div>`;
   } else if(state.editorTab==='cards'){
@@ -287,7 +290,7 @@ function setPath(obj,path,value){let seg=path.split('.'),v=obj;for(let i=0;i<seg
 function rerenderCms(){state.view='admin';state.previewMode=false;render()}
 async function saveCms(){if(!state.admin||!state.draft)throw new Error('تسجيل الدخول مطلوب');
   const cfg=cloneObj(state.draft);
-  if(cfg.navigation.length>20||cfg.homeCards.length>30||cfg.customPages.length>15)throw new Error('تم تجاوز حدود صفحات وأقسام الموقع');
+  if(cfg.navigation.length>20||cfg.homeCards.length>30||cfg.customPages.length>15||cfg.moments.length>18||cfg.moments.some(a=>!Array.isArray(a.photos)||a.photos.length>16))throw new Error('تم تجاوز حدود صفحات وأقسام الموقع');
   const payload=JSON.stringify(cfg);
   if(new TextEncoder().encode(payload).length>200000)throw new Error('المحتوى كبير جداً. قلّل النصوص أو الصور المضمّنة.');
   const r=await client.from('site_settings').update({config:cfg,version:state.configVersion+1,updated_at:new Date().toISOString()})
