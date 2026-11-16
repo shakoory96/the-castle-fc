@@ -26,7 +26,7 @@ function castleMomentsCard(a,kind){
     '<span class="castle-moment-shade" aria-hidden="true"></span>'+
     '<span class="castle-moment-content"><span class="castle-moment-category">'+esc(castleMomentsCategoryName(a))+'</span>'+
     '<strong>'+esc(a.title)+'</strong><span class="castle-moment-meta">'+
-    (a.date?dateFmt(a.date)+' · ':'')+fmt(castleMomentsPhotos(a).length)+' صورة</span></span></button>';
+    (a.date?esc(dateFmt(a.date))+' · ':'')+fmt(castleMomentsPhotos(a).length)+' صورة</span></span></button>';
 }
 function castleMomentsHome(){
   if(settings().sections?.moments===false)return '';
@@ -58,7 +58,7 @@ function castleMomentsPage(){
 function castleMomentsAlbumModal(id){
   const a=castleMomentsAlbums().find(x=>String(x.id)===String(id));if(!a)return;
   const photos=castleMomentsPhotos(a);
-  const info=(a.date?dateFmt(a.date)+' · ':'')+esc(castleMomentsCategoryName(a))+' · '+fmt(photos.length)+' صورة';
+  const info=(a.date?esc(dateFmt(a.date))+' · ':'')+esc(castleMomentsCategoryName(a))+' · '+fmt(photos.length)+' صورة';
   const html='<div class="castle-moments-modal-body"><div class="castle-moments-modal-top"><span class="castle-moments-eyebrow">CASTLE ALBUM</span>'+
     '<h2>'+esc(a.title)+'</h2><p>'+info+'</p>'+(a.description?'<p class="castle-moments-desc">'+esc(a.description)+'</p>':'')+'</div>'+
     '<div class="castle-moments-photo-grid">'+photos.map((p,i)=>'<button type="button" data-moments-photo="'+esc(id)+
