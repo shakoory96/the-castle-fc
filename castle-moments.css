@@ -116,3 +116,109 @@
 @media(max-width:660px){.castle-moments-side:has(> :only-child){grid-template-columns:1fr}}
 
 .castle-moments-featured.is-solo{grid-template-columns:1fr}
+
+
+/* 2026-11-16: mobile visual polish based on the club's real uploaded-photo screenshot.
+   Deep navy replaces the violet background on the home and Moments pages only,
+   leaving the administrator's stored theme and other page settings untouched. */
+body:has(#screen.home-screen),
+body:has(#screen .castle-moments-page){background:#091522!important}
+#screen.home-screen .castle-moments-home{
+  margin:22px 0 10px;padding:22px 22px 21px;
+  border:1px solid #284867;border-radius:23px;
+  background:radial-gradient(circle at 94% 0%,#193e5b75,transparent 48%),linear-gradient(155deg,#101f31,#0a1526 76%);
+  box-shadow:0 12px 35px #00000033
+}
+#screen .castle-moments-page{
+  padding:3px 0 12px;
+  background:linear-gradient(180deg,#0e1e31,#0b1728);
+  border-radius:22px
+}
+.castle-moment-card{
+  border-color:#355b7a;
+  background:#0b1b2c;
+  box-shadow:0 10px 24px #0005
+}
+/* A blurred copy fills the frame, while the sharp original is NEVER cropped. */
+.castle-moment-card img.castle-moment-backdrop{
+  z-index:0;object-fit:cover;object-position:center;
+  filter:blur(15px) saturate(.88) brightness(.52);
+  transform:scale(1.18);opacity:.94
+}
+.castle-moment-card img.castle-moment-full{
+  z-index:1;object-fit:contain;object-position:center;
+  filter:drop-shadow(0 5px 10px #0007);
+  transform:none
+}
+.castle-moment-card:hover img.castle-moment-full{transform:none}
+.castle-moment-card:hover img.castle-moment-backdrop{transform:scale(1.18)}
+.castle-moment-shade{
+  z-index:2;
+  background:linear-gradient(to top,#06111eea 0%,#06111e70 24%,transparent 57%)
+}
+.castle-moment-content{z-index:3;align-items:flex-start}
+.castle-moment-main .castle-moment-content strong{font-size:clamp(20px,2.5vw,28px)}
+/* Thumbnails are image-only: no duplicate album name or metadata. */
+.castle-moment-small .castle-moment-shade{
+  background:linear-gradient(to top,#07162c38,transparent 52%)
+}
+.castle-moment-thumb-icon{
+  position:absolute;z-index:3;bottom:9px;left:9px;
+  width:25px;height:25px;display:grid;place-items:center;
+  color:#d8ecff;background:#112c49ad;border:1px solid #65a6d066;
+  border-radius:9px;font-size:13px
+}
+.castle-moment-all-tile{
+  min-width:0;min-height:116px;
+  border:1px solid #3b6586;border-radius:16px;
+  background:radial-gradient(circle at 75% 25%,#28557870,transparent 65%),linear-gradient(145deg,#102b46,#09192d);
+  color:#e5f4ff;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:4px;padding:11px;text-align:center
+}
+.castle-moment-all-icon{
+  display:grid;place-items:center;width:31px;height:31px;
+  border-radius:10px;background:#1c4465;color:#94d4ff;font-size:21px
+}
+.castle-moment-all-tile strong{font-size:12px;font-weight:900}
+.castle-moment-all-tile small{font-size:9px;color:#8fc5ed}
+/* Existing individual-photo detail already uses object-fit:contain;
+   also make the album grid fit whole group photos without chopping faces. */
+.castle-moments-photo-grid img{object-fit:contain;object-position:center;background:#0a1829}
+@media(max-width:660px){
+  #screen.home-screen .castle-moments-home{
+    margin:17px -5px 10px;padding:16px 12px 14px;border-radius:19px
+  }
+  #screen .castle-moments-page{padding:0;border-radius:15px}
+  .castle-moments-featured{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:9px;min-height:0!important
+  }
+  .castle-moment-main{
+    height:211px!important;min-height:211px!important;border-radius:17px
+  }
+  .castle-moment-main .castle-moment-content{padding:13px 14px;gap:4px}
+  .castle-moment-main .castle-moment-content strong{font-size:20px}
+  .castle-moment-category{font-size:9px;padding:2px 7px}
+  .castle-moments-side,
+  .castle-moments-side:has(> :only-child){
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:112px!important;gap:9px;min-width:0
+  }
+  .castle-moment-small{
+    height:112px!important;min-height:112px!important;
+    width:100%;border-radius:13px
+  }
+  .castle-moment-all-tile{height:112px;min-height:112px}
+  .castle-moments-empty{background:linear-gradient(145deg,#132b45,#0c1b2e)}
+  .castle-moments-all{gap:9px}
+  .castle-moment-archive{min-height:167px}
+  /* Don't let supplementary CMS image cards form another huge visual block. */
+  #screen.home-screen .cms-card-grid img{
+    height:145px;object-fit:contain;background:#102138
+  }
+}
+@media(max-width:350px){
+  .castle-moment-main{height:185px!important;min-height:185px!important}
+  .castle-moments-side,.castle-moments-side:has(> :only-child){grid-template-rows:99px!important}
+  .castle-moment-small,.castle-moment-all-tile{height:99px!important;min-height:99px!important}
+}
