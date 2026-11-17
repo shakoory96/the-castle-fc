@@ -1,0 +1,38 @@
+name: Castle Mobile UI Audit
+on:
+  push:
+    branches:
+      - audit/mobile-visual-review-20261117
+    paths:
+      - audits/mobile_review_20261117.py
+      - .github/workflows/castle-mobile-audit.yml
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/mobile-visual-review-20261117
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Review actual live website at multiple iPhone widths
+        run: python audits/mobile_review_20261117.py
+      - name: Save screenshot and metrics to audit branch only
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f audits/mobile-results/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Record live Castle mobile browser audit findings"
+            git push origin HEAD:audit/mobile-visual-review-20261117
+          fi
