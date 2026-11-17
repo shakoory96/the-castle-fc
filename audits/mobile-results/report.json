@@ -155,7 +155,23 @@
     ],
     "http": 200,
     "width": 320,
-    "errors": []
+    "errors": [],
+    "heroImages": [
+      {
+        "cls": "cms-hero-back",
+        "complete": true,
+        "naturalWidth": 0,
+        "loading": "auto",
+        "sourceDomain": "shakoory96.github.io"
+      },
+      {
+        "cls": "",
+        "complete": true,
+        "naturalWidth": 200,
+        "loading": "auto",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      }
+    ]
   },
   {
     "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
@@ -313,7 +329,23 @@
     ],
     "http": 200,
     "width": 375,
-    "errors": []
+    "errors": [],
+    "heroImages": [
+      {
+        "cls": "cms-hero-back",
+        "complete": true,
+        "naturalWidth": 0,
+        "loading": "auto",
+        "sourceDomain": "shakoory96.github.io"
+      },
+      {
+        "cls": "",
+        "complete": true,
+        "naturalWidth": 200,
+        "loading": "auto",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      }
+    ]
   },
   {
     "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
@@ -472,8 +504,55 @@
     "http": 200,
     "width": 390,
     "errors": [],
+    "heroImages": [
+      {
+        "cls": "cms-hero-back",
+        "complete": true,
+        "naturalWidth": 0,
+        "loading": "auto",
+        "sourceDomain": "shakoory96.github.io"
+      },
+      {
+        "cls": "",
+        "complete": true,
+        "naturalWidth": 200,
+        "loading": "auto",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      }
+    ],
+    "galleryImages": [
+      {
+        "cls": "castle-moment-backdrop",
+        "complete": true,
+        "naturalWidth": 2048,
+        "loading": "lazy",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      },
+      {
+        "cls": "castle-moment-full",
+        "complete": true,
+        "naturalWidth": 2048,
+        "loading": "lazy",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      },
+      {
+        "cls": "castle-moment-backdrop",
+        "complete": true,
+        "naturalWidth": 1280,
+        "loading": "lazy",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      },
+      {
+        "cls": "castle-moment-full",
+        "complete": true,
+        "naturalWidth": 1280,
+        "loading": "lazy",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      }
+    ],
     "playerModal": true,
-    "albumModalError": "Locator.click: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\".castle-moment-card\").first\n    - locator resolved to <button type=\"button\" aria-labe"
+    "albumModal": true,
+    "albumPhotoCount": 2
   },
   {
     "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
@@ -631,7 +710,23 @@
     ],
     "http": 200,
     "width": 430,
-    "errors": []
+    "errors": [],
+    "heroImages": [
+      {
+        "cls": "cms-hero-back",
+        "complete": true,
+        "naturalWidth": 0,
+        "loading": "auto",
+        "sourceDomain": "shakoory96.github.io"
+      },
+      {
+        "cls": "",
+        "complete": true,
+        "naturalWidth": 200,
+        "loading": "auto",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      }
+    ]
   },
   {
     "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
@@ -789,6 +884,22 @@
     ],
     "http": 200,
     "width": 768,
-    "errors": []
+    "errors": [],
+    "heroImages": [
+      {
+        "cls": "cms-hero-back",
+        "complete": true,
+        "naturalWidth": 0,
+        "loading": "auto",
+        "sourceDomain": "shakoory96.github.io"
+      },
+      {
+        "cls": "",
+        "complete": true,
+        "naturalWidth": 200,
+        "loading": "auto",
+        "sourceDomain": "sfjqaeqabzhnikifpqki.supabase.co"
+      }
+    ]
   }
 ]
