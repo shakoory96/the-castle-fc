@@ -47,20 +47,27 @@ async def audit():
             data.update({"http":response.status if response else None,"width":width,"errors":errors})
             if width in (320,390,430):
                 await page.screenshot(path=str(OUT/f"castle-{width}.png"),full_page=(width==390))
+            data["heroImages"]=await page.evaluate("""() => [...document.querySelectorAll('#screen .hero img')].map(el=>({cls:el.className,complete:el.complete,naturalWidth:el.naturalWidth,loading:el.loading,sourceDomain:(()=>{try{return new URL(el.src).hostname}catch{return ''}})()}))""")
+            # Trigger actual lazy-loaded gallery photos by viewing gallery, not by using fullPage screenshot.
+            if width==390 and await page.locator('#screen .castle-moments-home').count():
+                await page.locator('#screen .castle-moments-home').scroll_into_view_if_needed()
+                await page.wait_for_timeout(3500)
+                data["galleryImages"]=await page.evaluate("""() => [...document.querySelectorAll('#screen .castle-moments-home img')].map(el=>({cls:el.className,complete:el.complete,naturalWidth:el.naturalWidth,loading:el.loading,sourceDomain:(()=>{try{return new URL(el.src).hostname}catch{return ''}})()}))""")
+                await page.screenshot(path=str(OUT/"castle-gallery-390.png"),full_page=False)
             # Click-test actual public player card and close; do not write data.
             if width==390 and await page.locator('.castle-star-card').count():
                 try:
-                    await page.locator('.castle-star-card').first.click(timeout=3000)
+                    await page.locator('.castle-star-card').first.click(timeout=6000)
                     data["playerModal"]=await page.locator('.castle-player-sheet').count()>0
-                    await page.locator('#overlay [data-close="1"]').first.click(timeout=3000)
+                    await page.locator('#overlay button.close').first.click(timeout=4000)
                 except Exception as e:data["playerModalError"]=str(e)[:160]
             # Click-test actual published album.
             if width==390 and await page.locator('.castle-moment-card').count():
                 try:
-                    await page.locator('.castle-moment-card').first.click(timeout=3000)
+                    await page.locator('.castle-moment-card').first.click(timeout=6000)
                     data["albumModal"]=await page.locator('.castle-moments-modal').count()>0
                     data["albumPhotoCount"]=await page.locator('.castle-moments-photo-grid button').count()
-                    await page.locator('#overlay [data-close="1"]').first.click(timeout=3000)
+                    await page.locator('#overlay button.close').first.click(timeout=4000)
                 except Exception as e:data["albumModalError"]=str(e)[:160]
             results.append(data)
             await page.close()
