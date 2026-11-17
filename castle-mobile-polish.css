@@ -1,0 +1,100 @@
+/* THE CASTLE FC — mobile polish after approved 2026 visual refresh.
+   Narrow fixes only: no data, logo, roster JS or section-order changes. */
+@media (max-width:960px){
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  /* Keep the sticky header compact without truncating the current page. */
+  .topbar .trail{min-width:0;max-width:100%;overflow:hidden}
+  .topbar .trail b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .topbar .top-actions{flex-shrink:0}
+  .mobile-bottom button{touch-action:manipulation}
+  .mobile-bottom button:focus-visible{outline:2px solid #8fd2ff;outline-offset:-2px}
+  #screen.home-screen{min-width:0}
+  #screen.home-screen .hero-copy{min-width:0}
+  #screen.home-screen .hero .hero-actions{align-items:center}
+  #screen.home-screen .hero h2,
+  #screen.home-screen .hero p{overflow-wrap:break-word}
+}
+@media (max-width:660px){
+  /* Keep the approved hero but avoid crowding its text at small iPhone sizes. */
+  #screen.home-screen .hero{max-width:100%;overflow:hidden}
+  #screen.home-screen .hero .hero-actions .btn.primary{
+    display:inline-flex;justify-content:center;align-items:center;
+    min-height:40px;line-height:1.4;max-width:100%
+  }
+  #screen.home-screen .hero .pill{line-height:1.35;max-width:100%}
+  /* Roster stays native manual swipe — no auto scroll or animation. */
+  #screen.home-screen .castle-stars{min-width:0}
+  #screen.home-screen .castle-stars-header{gap:8px}
+  #screen.home-screen .castle-stars-heading{min-width:0}
+  #screen.home-screen .castle-stars-heading h3{line-height:1.45}
+  #screen.home-screen .castle-stars-arrows{flex-shrink:0}
+  #screen.home-screen .castle-stars-rail{
+    width:100%;min-width:0;overscroll-behavior-inline:contain;
+    scroll-padding-inline:10px
+  }
+  #screen.home-screen .castle-stars-arrow{min-width:40px;min-height:40px}
+  /* Keep the approved single-row stats on normal phones; prevent digit overflow. */
+  #screen.home-screen .castle-stats-heading{flex-wrap:wrap;row-gap:2px}
+  #screen.home-screen .castle-stats-strip .kpi{min-width:0;overflow:hidden}
+  #screen.home-screen .castle-stats-strip .kpi .num{
+    max-width:100%;min-width:0;white-space:nowrap;font-variant-numeric:tabular-nums;
+    font-size:clamp(18px,5.6vw,26px)
+  }
+  #screen.home-screen .castle-stats-strip .kpi .lbl{
+    max-width:100%;line-height:1.4;hyphens:auto
+  }
+  /* Results: long club names should wrap inside their column, not expand page width. */
+  #screen.home-screen .card-list{min-width:0}
+  #screen.home-screen .fixture{
+    display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    align-items:center;gap:9px;padding:13px 9px
+  }
+  #screen.home-screen .fixture>div{min-width:0;max-width:100%}
+  #screen.home-screen .fixture .op{
+    font-size:12px;line-height:1.45;
+    overflow-wrap:anywhere;word-break:normal
+  }
+  #screen.home-screen .fixture .comp{
+    font-size:10px;line-height:1.5;
+    overflow-wrap:anywhere;word-break:normal
+  }
+  #screen.home-screen .fixture .mid{white-space:nowrap;text-align:center;font-size:18px;font-variant-numeric:tabular-nums}
+  #screen.home-screen .panel-head{gap:8px}
+  #screen.home-screen .panel-head h3{min-width:0;line-height:1.45}
+  #screen.home-screen .panel-head .sub-link{flex-shrink:0;white-space:nowrap}
+  /* Full image gallery remains photo-safe; avoid long headings hiding faces. */
+  #screen.home-screen .castle-moment-main .castle-moment-content strong{
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    overflow:hidden;line-height:1.4;max-width:100%
+  }
+  #screen.home-screen .castle-moments-heading{min-width:0}
+  #screen.home-screen .castle-moments-heading>div{min-width:0}
+  #screen.home-screen .castle-moments-heading .castle-moments-more{
+    min-height:38px;display:inline-flex;align-items:center;justify-content:center
+  }
+}
+/* Very narrow phones: avoid four unreadable 65px-wide stat cards. */
+@media (max-width:350px){
+  #screen.home-screen .hero{grid-template-columns:minmax(0,1fr) 73px}
+  #screen.home-screen .hero-copy{padding:15px 8px 16px}
+  #screen.home-screen .hero-art{min-height:112px;height:124px}
+  #screen.home-screen .hero-art img{width:69px}
+  #screen.home-screen .hero-ring{width:77px;height:77px}
+  #screen.home-screen .hero h2{font-size:20px}
+  #screen.home-screen .castle-stars-arrows{gap:3px}
+  #screen.home-screen .castle-stars-arrow{min-width:36px;min-height:36px;width:36px;height:36px}
+  #screen.home-screen .kpis.castle-stats-strip{
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:7px
+  }
+  #screen.home-screen .castle-stats-strip .kpi{min-height:79px;gap:3px}
+  #screen.home-screen .castle-stats-strip .kpi .num{font-size:23px}
+  #screen.home-screen .castle-stats-strip .kpi .lbl{font-size:10px}
+  #screen.home-screen .fixture{gap:5px;padding:11px 7px}
+  #screen.home-screen .fixture .op{font-size:11px}
+  #screen.home-screen .fixture .mid{font-size:16px}
+  .mobile-bottom button small{font-size:9px;letter-spacing:-.2px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #screen.home-screen .castle-moment-card img{transition:none!important}
+}
