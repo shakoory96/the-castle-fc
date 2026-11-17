@@ -1,0 +1,794 @@
+[
+  {
+    "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
+    "title": "THE CASTLE FC | القلعة",
+    "ready": "complete",
+    "w": 320,
+    "clientW": 320,
+    "scrollW": 320,
+    "bodyBg": "rgb(9, 21, 34)",
+    "heroDisplay": "grid",
+    "sections": [
+      {
+        "sel": ".topbar",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 58
+        }
+      },
+      {
+        "sel": "#screen .hero",
+        "rect": {
+          "x": 13,
+          "y": 70,
+          "w": 294,
+          "h": 234
+        }
+      },
+      {
+        "sel": "#screen .castle-stars",
+        "rect": {
+          "x": 13,
+          "y": 327,
+          "w": 294,
+          "h": 412
+        }
+      },
+      {
+        "sel": "#castle-stars-rail",
+        "rect": {
+          "x": 13,
+          "y": 430,
+          "w": 294,
+          "h": 272
+        }
+      },
+      {
+        "sel": "#screen .castle-stats",
+        "rect": {
+          "x": 13,
+          "y": 762,
+          "w": 294,
+          "h": 214
+        }
+      },
+      {
+        "sel": "#screen .castle-stats-strip",
+        "rect": {
+          "x": 13,
+          "y": 797,
+          "w": 294,
+          "h": 179
+        }
+      },
+      {
+        "sel": "#screen .card-list",
+        "rect": {
+          "x": 31,
+          "y": 1061,
+          "w": 258,
+          "h": 234
+        }
+      },
+      {
+        "sel": "#screen .castle-moments-home",
+        "rect": {
+          "x": 8,
+          "y": 1330,
+          "w": 304,
+          "h": 410
+        }
+      },
+      {
+        "sel": ".mobile-bottom",
+        "rect": {
+          "x": 0,
+          "y": 773,
+          "w": 320,
+          "h": 71
+        }
+      }
+    ],
+    "stats": [
+      "♟ 9 اللاعبون",
+      "◉ 3 المباريات",
+      "🏆 2 الانتصارات",
+      "⚽ 13 الأهداف المسجلة"
+    ],
+    "stars": 9,
+    "starScrollable": true,
+    "momentsCards": 2,
+    "results": 3,
+    "activeNav": [
+      "⌂\nالرئيسية"
+    ],
+    "navLabels": [
+      "⌂ الرئيسية",
+      "♟ اللاعبون",
+      "⚽ المباريات",
+      "⚡ ليلة القلعة",
+      "☰ المزيد"
+    ],
+    "overflowing": [
+      {
+        "tag": "BUTTON",
+        "cls": "castle-star-card",
+        "txt": "#3#3مصطفى علاءدفاع ا"
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-photo",
+        "txt": "#3#3"
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "txt": ""
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-info",
+        "txt": "مصطفى علاءدفاع ايسرع"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-name",
+        "txt": "مصطفى علاء"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-position",
+        "txt": "دفاع ايسر"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-bottom",
+        "txt": "عرض البطاقة ←"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-open",
+        "txt": "عرض البطاقة ←"
+      }
+    ],
+    "http": 200,
+    "width": 320,
+    "errors": []
+  },
+  {
+    "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
+    "title": "THE CASTLE FC | القلعة",
+    "ready": "complete",
+    "w": 375,
+    "clientW": 375,
+    "scrollW": 375,
+    "bodyBg": "rgb(9, 21, 34)",
+    "heroDisplay": "grid",
+    "sections": [
+      {
+        "sel": ".topbar",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 375,
+          "h": 58
+        }
+      },
+      {
+        "sel": "#screen .hero",
+        "rect": {
+          "x": 13,
+          "y": 70,
+          "w": 349,
+          "h": 236
+        }
+      },
+      {
+        "sel": "#screen .castle-stars",
+        "rect": {
+          "x": 13,
+          "y": 329,
+          "w": 349,
+          "h": 412
+        }
+      },
+      {
+        "sel": "#castle-stars-rail",
+        "rect": {
+          "x": 13,
+          "y": 431,
+          "w": 349,
+          "h": 272
+        }
+      },
+      {
+        "sel": "#screen .castle-stats",
+        "rect": {
+          "x": 13,
+          "y": 764,
+          "w": 349,
+          "h": 126
+        }
+      },
+      {
+        "sel": "#screen .castle-stats-strip",
+        "rect": {
+          "x": 13,
+          "y": 799,
+          "w": 349,
+          "h": 91
+        }
+      },
+      {
+        "sel": "#screen .card-list",
+        "rect": {
+          "x": 31,
+          "y": 976,
+          "w": 313,
+          "h": 250
+        }
+      },
+      {
+        "sel": "#screen .castle-moments-home",
+        "rect": {
+          "x": 8,
+          "y": 1261,
+          "w": 359,
+          "h": 449
+        }
+      },
+      {
+        "sel": ".mobile-bottom",
+        "rect": {
+          "x": 0,
+          "y": 773,
+          "w": 375,
+          "h": 71
+        }
+      }
+    ],
+    "stats": [
+      "♟ 9 اللاعبون",
+      "◉ 3 المباريات",
+      "🏆 2 الانتصارات",
+      "⚽ 13 الأهداف المسجلة"
+    ],
+    "stars": 9,
+    "starScrollable": true,
+    "momentsCards": 2,
+    "results": 3,
+    "activeNav": [
+      "⌂\nالرئيسية"
+    ],
+    "navLabels": [
+      "⌂ الرئيسية",
+      "♟ اللاعبون",
+      "⚽ المباريات",
+      "⚡ ليلة القلعة",
+      "☰ المزيد"
+    ],
+    "overflowing": [
+      {
+        "tag": "BUTTON",
+        "cls": "castle-star-card",
+        "txt": "#3#3مصطفى علاءدفاع ا"
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-photo",
+        "txt": "#3#3"
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "txt": ""
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-info",
+        "txt": "مصطفى علاءدفاع ايسرع"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-name",
+        "txt": "مصطفى علاء"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-position",
+        "txt": "دفاع ايسر"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-bottom",
+        "txt": "عرض البطاقة ←"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-open",
+        "txt": "عرض البطاقة ←"
+      }
+    ],
+    "http": 200,
+    "width": 375,
+    "errors": []
+  },
+  {
+    "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
+    "title": "THE CASTLE FC | القلعة",
+    "ready": "complete",
+    "w": 390,
+    "clientW": 390,
+    "scrollW": 390,
+    "bodyBg": "rgb(9, 21, 34)",
+    "heroDisplay": "grid",
+    "sections": [
+      {
+        "sel": ".topbar",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 58
+        }
+      },
+      {
+        "sel": "#screen .hero",
+        "rect": {
+          "x": 13,
+          "y": 70,
+          "w": 364,
+          "h": 246
+        }
+      },
+      {
+        "sel": "#screen .castle-stars",
+        "rect": {
+          "x": 13,
+          "y": 339,
+          "w": 364,
+          "h": 412
+        }
+      },
+      {
+        "sel": "#castle-stars-rail",
+        "rect": {
+          "x": 13,
+          "y": 441,
+          "w": 364,
+          "h": 272
+        }
+      },
+      {
+        "sel": "#screen .castle-stats",
+        "rect": {
+          "x": 13,
+          "y": 774,
+          "w": 364,
+          "h": 126
+        }
+      },
+      {
+        "sel": "#screen .castle-stats-strip",
+        "rect": {
+          "x": 13,
+          "y": 809,
+          "w": 364,
+          "h": 91
+        }
+      },
+      {
+        "sel": "#screen .card-list",
+        "rect": {
+          "x": 31,
+          "y": 986,
+          "w": 328,
+          "h": 250
+        }
+      },
+      {
+        "sel": "#screen .castle-moments-home",
+        "rect": {
+          "x": 8,
+          "y": 1271,
+          "w": 374,
+          "h": 449
+        }
+      },
+      {
+        "sel": ".mobile-bottom",
+        "rect": {
+          "x": 0,
+          "y": 772,
+          "w": 390,
+          "h": 72
+        }
+      }
+    ],
+    "stats": [
+      "♟ 9 اللاعبون",
+      "◉ 3 المباريات",
+      "🏆 2 الانتصارات",
+      "⚽ 13 الأهداف المسجلة"
+    ],
+    "stars": 9,
+    "starScrollable": true,
+    "momentsCards": 2,
+    "results": 3,
+    "activeNav": [
+      "⌂\nالرئيسية"
+    ],
+    "navLabels": [
+      "⌂ الرئيسية",
+      "♟ اللاعبون",
+      "⚽ المباريات",
+      "⚡ ليلة القلعة",
+      "☰ المزيد"
+    ],
+    "overflowing": [
+      {
+        "tag": "BUTTON",
+        "cls": "castle-star-card",
+        "txt": "#3#3مصطفى علاءدفاع ا"
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-photo",
+        "txt": "#3#3"
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "txt": ""
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-info",
+        "txt": "مصطفى علاءدفاع ايسرع"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-name",
+        "txt": "مصطفى علاء"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-position",
+        "txt": "دفاع ايسر"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-bottom",
+        "txt": "عرض البطاقة ←"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-open",
+        "txt": "عرض البطاقة ←"
+      }
+    ],
+    "http": 200,
+    "width": 390,
+    "errors": [],
+    "playerModal": true,
+    "albumModalError": "Locator.click: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\".castle-moment-card\").first\n    - locator resolved to <button type=\"button\" aria-labe"
+  },
+  {
+    "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
+    "title": "THE CASTLE FC | القلعة",
+    "ready": "complete",
+    "w": 430,
+    "clientW": 430,
+    "scrollW": 430,
+    "bodyBg": "rgb(9, 21, 34)",
+    "heroDisplay": "grid",
+    "sections": [
+      {
+        "sel": ".topbar",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 430,
+          "h": 58
+        }
+      },
+      {
+        "sel": "#screen .hero",
+        "rect": {
+          "x": 13,
+          "y": 70,
+          "w": 404,
+          "h": 253
+        }
+      },
+      {
+        "sel": "#screen .castle-stars",
+        "rect": {
+          "x": 13,
+          "y": 346,
+          "w": 404,
+          "h": 396
+        }
+      },
+      {
+        "sel": "#castle-stars-rail",
+        "rect": {
+          "x": 13,
+          "y": 433,
+          "w": 404,
+          "h": 272
+        }
+      },
+      {
+        "sel": "#screen .castle-stats",
+        "rect": {
+          "x": 13,
+          "y": 765,
+          "w": 404,
+          "h": 126
+        }
+      },
+      {
+        "sel": "#screen .castle-stats-strip",
+        "rect": {
+          "x": 13,
+          "y": 800,
+          "w": 404,
+          "h": 91
+        }
+      },
+      {
+        "sel": "#screen .card-list",
+        "rect": {
+          "x": 31,
+          "y": 977,
+          "w": 368,
+          "h": 235
+        }
+      },
+      {
+        "sel": "#screen .castle-moments-home",
+        "rect": {
+          "x": 8,
+          "y": 1247,
+          "w": 414,
+          "h": 449
+        }
+      },
+      {
+        "sel": ".mobile-bottom",
+        "rect": {
+          "x": 0,
+          "y": 772,
+          "w": 430,
+          "h": 72
+        }
+      }
+    ],
+    "stats": [
+      "♟ 9 اللاعبون",
+      "◉ 3 المباريات",
+      "🏆 2 الانتصارات",
+      "⚽ 13 الأهداف المسجلة"
+    ],
+    "stars": 9,
+    "starScrollable": true,
+    "momentsCards": 2,
+    "results": 3,
+    "activeNav": [
+      "⌂\nالرئيسية"
+    ],
+    "navLabels": [
+      "⌂ الرئيسية",
+      "♟ اللاعبون",
+      "⚽ المباريات",
+      "⚡ ليلة القلعة",
+      "☰ المزيد"
+    ],
+    "overflowing": [
+      {
+        "tag": "BUTTON",
+        "cls": "castle-star-card",
+        "txt": "#3#3مصطفى علاءدفاع ا"
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-photo",
+        "txt": "#3#3"
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "txt": ""
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-info",
+        "txt": "مصطفى علاءدفاع ايسرع"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-name",
+        "txt": "مصطفى علاء"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-position",
+        "txt": "دفاع ايسر"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-bottom",
+        "txt": "عرض البطاقة ←"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-open",
+        "txt": "عرض البطاقة ←"
+      }
+    ],
+    "http": 200,
+    "width": 430,
+    "errors": []
+  },
+  {
+    "href": "https://shakoory96.github.io/the-castle-fc/?audit=iphone-20261117",
+    "title": "THE CASTLE FC | القلعة",
+    "ready": "complete",
+    "w": 768,
+    "clientW": 768,
+    "scrollW": 768,
+    "bodyBg": "rgb(9, 21, 34)",
+    "heroDisplay": "grid",
+    "sections": [
+      {
+        "sel": ".topbar",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 64
+        }
+      },
+      {
+        "sel": "#screen .hero",
+        "rect": {
+          "x": 18,
+          "y": 86,
+          "w": 732,
+          "h": 322
+        }
+      },
+      {
+        "sel": "#screen .castle-stars",
+        "rect": {
+          "x": 18,
+          "y": 431,
+          "w": 732,
+          "h": 477
+        }
+      },
+      {
+        "sel": "#castle-stars-rail",
+        "rect": {
+          "x": 18,
+          "y": 550,
+          "w": 732,
+          "h": 313
+        }
+      },
+      {
+        "sel": "#screen .castle-stats",
+        "rect": {
+          "x": 18,
+          "y": 936,
+          "w": 732,
+          "h": 157
+        }
+      },
+      {
+        "sel": "#screen .castle-stats-strip",
+        "rect": {
+          "x": 18,
+          "y": 975,
+          "w": 732,
+          "h": 117
+        }
+      },
+      {
+        "sel": "#screen .card-list",
+        "rect": {
+          "x": 42,
+          "y": 1188,
+          "w": 684,
+          "h": 253
+        }
+      },
+      {
+        "sel": "#screen .castle-moments-home",
+        "rect": {
+          "x": 18,
+          "y": 1488,
+          "w": 732,
+          "h": 459
+        }
+      },
+      {
+        "sel": ".mobile-bottom",
+        "rect": {
+          "x": 0,
+          "y": 775,
+          "w": 768,
+          "h": 69
+        }
+      }
+    ],
+    "stats": [
+      "♟ 9 اللاعبون",
+      "◉ 3 المباريات",
+      "🏆 2 الانتصارات",
+      "⚽ 13 الأهداف المسجلة"
+    ],
+    "stars": 9,
+    "starScrollable": true,
+    "momentsCards": 2,
+    "results": 3,
+    "activeNav": [
+      "⌂\nالرئيسية"
+    ],
+    "navLabels": [
+      "⌂ الرئيسية",
+      "♟ اللاعبون",
+      "⚽ المباريات",
+      "⚡ ليلة القلعة",
+      "☰ المزيد"
+    ],
+    "overflowing": [
+      {
+        "tag": "BUTTON",
+        "cls": "castle-star-card",
+        "txt": "#5#5مصطفى صلاحمدافعع"
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-photo",
+        "txt": "#5#5"
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "txt": ""
+      },
+      {
+        "tag": "DIV",
+        "cls": "castle-star-info",
+        "txt": "مصطفى صلاحمدافععرض ا"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-name",
+        "txt": "مصطفى صلاح"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-position",
+        "txt": "مدافع"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-bottom",
+        "txt": "عرض البطاقة ←"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "castle-star-open",
+        "txt": "عرض البطاقة ←"
+      }
+    ],
+    "http": 200,
+    "width": 768,
+    "errors": []
+  }
+]
