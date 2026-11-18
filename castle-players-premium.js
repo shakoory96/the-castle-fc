@@ -22,9 +22,10 @@ function castlePremiumMetric(label,val){
 }
 function castlePremiumListCard(p){
   const raw=p.photo_url&&safeUrl(p.photo_url);
-  const photo=raw?'<img src="'+raw+'" alt="صورة '+esc(p.name)+'" loading="lazy" decoding="async">':'<span class="castle-premium-silhouette" aria-hidden="true">♟</span>';
+  const photo=raw?'<img class="castle-roster-photo-backdrop" src="'+raw+'" alt="" aria-hidden="true" loading="lazy" decoding="async">'+
+    '<img class="castle-roster-photo-foreground" src="'+raw+'" alt="صورة '+esc(p.name)+'" loading="lazy" decoding="async">':'<span class="castle-premium-silhouette" aria-hidden="true">♟</span>';
   const jersey=p.jersey_number==null?'—':fmt(p.jersey_number);
-  return '<button class="castle-roster-card" type="button" data-player="'+esc(p.id)+'" aria-label="عرض بطاقة '+esc(p.name)+'">'+
+  return '<button class="castle-roster-card" type="button" data-player="'+esc(p.id)+'" data-player-name="'+esc(p.name)+'" aria-label="عرض بطاقة '+esc(p.name)+'">'+
     '<span class="castle-roster-visual"><span class="castle-roster-watermark" aria-hidden="true">#'+jersey+'</span>'+
     '<span class="castle-roster-image">'+photo+'</span><span class="castle-roster-jersey">#'+jersey+'</span>'+
     '<span class="castle-roster-brand">THE CASTLE FC</span></span>'+
