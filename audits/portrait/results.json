@@ -10,7 +10,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": ".80",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -18,7 +18,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": ".77",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -42,7 +42,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -50,7 +50,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -58,7 +58,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -66,7 +66,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -74,7 +74,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       }
     ]
@@ -90,7 +90,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": ".80",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -98,7 +98,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": ".77",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -122,7 +122,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -130,7 +130,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -138,7 +138,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -146,7 +146,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       },
       {
@@ -154,7 +154,7 @@
         "photoWidth": 1122,
         "photoHeight": 1402,
         "zoom": "1",
-        "objectFit": "contain",
+        "objectFit": "cover",
         "frameHeight": 160
       }
     ]
