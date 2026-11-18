@@ -37,10 +37,25 @@ async def run():
             # Apply ONLY proposed CSS and player name data-attrs to the currently live page.
             await page.evaluate("""() => document.querySelectorAll('.castle-roster-card').forEach(card => {
               card.dataset.playerName=card.querySelector('.castle-roster-name')?.textContent.trim()||'';
+              const img=card.querySelector('.castle-roster-image img');
+              if(img){
+                img.classList.add('castle-roster-photo-foreground');
+                const backdrop=img.cloneNode(false);
+                backdrop.className='castle-roster-photo-backdrop';
+                backdrop.alt='';
+                backdrop.setAttribute('aria-hidden','true');
+                img.before(backdrop);
+              }
             })""")
             await page.add_style_tag(path="castle-player-photo-framing.css")
             await page.wait_for_timeout(350)
             await page.locator(".castle-roster-grid").screenshot(path=str(ROOT/("players-after-"+str(width)+".png")))
+            if width==390:
+                for i,filename in [(0,"barak-final.png"),(1,"adnan-final.png"),(4,"mustafa-final.png"),(5,"shihab-final.png")]:
+                    card=page.locator(".castle-roster-card").nth(i)
+                    await card.evaluate("(el)=>{const r=el.getBoundingClientRect();window.scrollBy(0,r.top-200)}")
+                    await page.wait_for_timeout(150)
+                    await card.screenshot(path=str(ROOT/filename))
             items=await page.evaluate("""() => [...document.querySelectorAll('.castle-roster-card')].map(card=>{
               const img=card.querySelector('.castle-roster-image img');
               const rect=card.querySelector('.castle-roster-visual')?.getBoundingClientRect();
