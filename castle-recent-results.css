@@ -1,0 +1,72 @@
+/* THE CASTLE FC — recent results, centered match scoreboard.
+   Only homepage recent results; existing Matches and admin views remain unchanged. */
+#screen.home-screen .fixture.castle-home-result{
+  width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:0;text-align:center;color:#ecf5ff;
+  padding:18px 16px 16px;border:1px solid #365f8b;border-radius:17px;
+  background:linear-gradient(140deg,#14263d,#101d31);
+  box-shadow:inset 0 1px 0 #ffffff08;
+  cursor:pointer
+}
+#screen.home-screen .fixture.castle-home-result:hover{
+  border-color:#5799d3;background:linear-gradient(140deg,#183251,#11243c)
+}
+#screen.home-screen .fixture.castle-home-result:focus-visible{
+  outline:2px solid #9ad7ff;outline-offset:3px
+}
+#screen.home-screen .castle-result-competition{
+  display:block;width:100%;text-align:center;
+  color:#88bff0;font-size:12px;font-weight:900;line-height:1.5;
+  margin-bottom:10px;overflow-wrap:anywhere
+}
+#screen.home-screen .castle-result-match{
+  display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  gap:clamp(9px,2.5vw,22px);align-items:center;justify-items:center;
+  width:100%;min-width:0;margin:0 0 12px
+}
+#screen.home-screen .castle-result-team{
+  font-size:clamp(14px,2.6vw,20px);font-weight:900;line-height:1.35;
+  color:#f6faff;text-align:center;overflow-wrap:anywhere;min-width:0;
+  max-width:100%;white-space:normal
+}
+#screen.home-screen .castle-result-score{
+  display:block;direction:ltr;unicode-bidi:isolate;white-space:nowrap;
+  font-size:clamp(25px,3.2vw,35px);font-weight:900;line-height:1;
+  color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.3px;
+  padding:3px 0 4px
+}
+#screen.home-screen .castle-result-date,
+#screen.home-screen .castle-result-venue{
+  display:block;width:100%;text-align:center;
+  color:#b2c8df;line-height:1.55;font-size:12px;
+  overflow-wrap:anywhere
+}
+#screen.home-screen .castle-result-date{margin-bottom:5px}
+#screen.home-screen .castle-result-venue{color:#93aac2}
+@media(max-width:660px){
+  #screen.home-screen .fixture.castle-home-result{
+    display:flex;grid-template-columns:none;
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:0;padding:17px 12px 15px;border-radius:16px
+  }
+  #screen.home-screen .castle-result-competition{
+    font-size:12px;margin-bottom:12px
+  }
+  #screen.home-screen .castle-result-match{
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    gap:11px;margin-bottom:13px
+  }
+  #screen.home-screen .castle-result-team{font-size:16px;line-height:1.4}
+  #screen.home-screen .castle-result-score{font-size:29px}
+  #screen.home-screen .castle-result-date{font-size:11px;margin-bottom:5px}
+  #screen.home-screen .castle-result-venue{font-size:11px}
+}
+@media(max-width:360px){
+  #screen.home-screen .fixture.castle-home-result{padding:15px 8px}
+  #screen.home-screen .castle-result-match{gap:7px}
+  #screen.home-screen .castle-result-team{font-size:14px}
+  #screen.home-screen .castle-result-score{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){
+  #screen.home-screen .fixture.castle-home-result{transition:none}
+}
