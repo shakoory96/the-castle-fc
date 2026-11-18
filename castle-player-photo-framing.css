@@ -1,0 +1,51 @@
+/* THE CASTLE FC — unified player portraits.
+   The saved original photographs are never edited. The common portrait stage
+   stays identical for every player, with a gentle optical correction for
+   two unusually close-up source photos (Barak and Adnan). */
+.castle-roster-card{
+  --castle-photo-scale:1;
+}
+.castle-roster-visual{
+  overflow:hidden;
+}
+.castle-roster-image{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  padding:9px 9px 0;
+  background:radial-gradient(circle at 50% 36%,#438ed524,transparent 70%);
+}
+.castle-roster-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center center;
+  transform:scale(var(--castle-photo-scale,1));
+  transform-origin:50% 20%;
+  transition:none;
+}
+/* Uploaded photos of Barak and Adnan were framed substantially closer
+   than the rest. Reduce the display zoom only; do not alter the photo file. */
+.castle-roster-card[data-player-name="براك ثائر"]{
+  --castle-photo-scale:.80;
+}
+.castle-roster-card[data-player-name="عدنان مروان"]{
+  --castle-photo-scale:.77;
+}
+@media (max-width:660px){
+  .castle-roster-visual{height:160px}
+  .castle-roster-image{padding:7px 7px 0}
+  .castle-roster-image img{
+    object-fit:contain;
+    object-position:center center;
+    transform-origin:50% 19%;
+  }
+}
+@media (max-width:355px){
+  .castle-roster-visual{height:143px}
+}
+@media (prefers-reduced-motion:reduce){
+  .castle-roster-image img{transition:none}
+}
