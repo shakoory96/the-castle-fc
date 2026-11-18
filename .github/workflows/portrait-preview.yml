@@ -1,0 +1,37 @@
+name: Castle portrait preview
+on:
+  push:
+    branches:
+      - fix/unified-player-photo-framing-20261118
+    paths:
+      - audits/portrait_preview.py
+      - .github/workflows/portrait-preview.yml
+permissions:
+  contents: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/unified-player-photo-framing-20261118
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install browser test
+        run: |
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Preview live site with only the proposed player photo styles
+        run: python audits/portrait_preview.py
+      - name: Save read-only screenshots and measurements
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f audits/portrait/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Record unified portrait frame visual preview"
+            git push origin HEAD:fix/unified-player-photo-framing-20261118
+          fi
