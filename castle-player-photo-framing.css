@@ -16,7 +16,21 @@
   padding:9px 9px 0;
   background:radial-gradient(circle at 50% 36%,#438ed524,transparent 70%);
 }
-.castle-roster-image img{
+.castle-roster-image .castle-roster-photo-backdrop{
+  position:absolute;
+  z-index:0;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.12);
+  filter:blur(12px) brightness(.64) saturate(.86);
+  opacity:0;
+  pointer-events:none;
+}
+.castle-roster-image .castle-roster-photo-foreground{
+  position:relative;
+  z-index:1;
   display:block;
   width:100%;
   height:100%;
@@ -34,10 +48,13 @@
 .castle-roster-card[data-player-name="عدنان مروان"]{
   --castle-photo-scale:.77;
 }
+.castle-roster-card:is([data-player-name="براك ثائر"],[data-player-name="عدنان مروان"]) .castle-roster-photo-backdrop{
+  opacity:.94;
+}
 @media (max-width:660px){
   .castle-roster-visual{height:160px}
   .castle-roster-image{padding:7px 7px 0}
-  .castle-roster-image img{
+  .castle-roster-image .castle-roster-photo-foreground{
     object-fit:contain;
     object-position:center center;
     transform-origin:50% 19%;
@@ -47,5 +64,5 @@
   .castle-roster-visual{height:143px}
 }
 @media (prefers-reduced-motion:reduce){
-  .castle-roster-image img{transition:none}
+  .castle-roster-image .castle-roster-photo-foreground{transition:none}
 }
